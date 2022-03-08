@@ -1,15 +1,17 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-require("dotenv").config();
+const path = require('path');
 
+
+require('dotenv').config({ path: '.env' });
 const app = express();
 
 app.use(express.json());
 app.use(cors());
 const PORT = process.env.PORT || 5000;
 const uri = process.env.MONGO_URI;
-mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(uri, { useNewUrlParser: true});
 const connection = mongoose.connection;
 connection.once("open", () => {
   console.log("MongoDB database connection established successfully");
