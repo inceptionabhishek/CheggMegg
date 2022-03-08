@@ -33,7 +33,7 @@ function SignupTutor() {
           setImage(data.url);
           console.log(data);
         });
-     await axios
+      await axios
         .post("http://localhost:5000/api/tutor/add/newtutor", {
           username: username,
           name: name,
@@ -42,9 +42,9 @@ function SignupTutor() {
           profileimage: image,
         })
         .then((res) => {
-          localStorage.setItem("email",email);
-          localStorage.setItem("user","tutor");
-          localStorage.setItem("login",true);
+          localStorage.setItem("email", email);
+          localStorage.setItem("user", "tutor");
+          localStorage.setItem("login", true);
           window.location.href = "/tutor/answerquestion";
           console.log(res);
         })

@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
-import {Navigate} from 'react-router-dom';
+import { Navigate } from "react-router-dom";
 
 function Signin() {
   const [email, setEmail] = useState("");
@@ -19,10 +19,11 @@ function Signin() {
         if (response.data.message === "Successfully logged in") {
           setEmail("");
           setPassword("");
-          window.location.href = "/student/askquestion";
+
           localStorage.setItem("user", "student");
           localStorage.setItem("email", email);
           localStorage.setItem("login", true);
+          window.location.href = "/student/askquestion";
         } else {
           setAlert(true);
         }
@@ -58,7 +59,7 @@ function Signin() {
                   onChange={(event) => setPassword(event.target.value)}
                 />
               </div>
-              
+
               <button type="submit" class="btn btn-primary">
                 Submit
               </button>

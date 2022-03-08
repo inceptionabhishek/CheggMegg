@@ -18,10 +18,11 @@ function SigninTutor() {
         if (response.data.message === "Successfully logged in") {
           setEmail("");
           setPassword("");
-          window.location.href = "/tutor/answerquestion";
+
           localStorage.setItem("user", "tutor");
           localStorage.setItem("email", email);
-          localStorage.setItem("login",true);
+          localStorage.setItem("login", true);
+          window.location.href = "/tutor/answerquestion";
         } else {
           setAlert(true);
         }

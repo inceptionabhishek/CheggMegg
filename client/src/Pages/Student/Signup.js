@@ -54,10 +54,10 @@ function Signup() {
           profileimage: image,
         })
         .then((res) => {
-          window.location.href = "/student/askquestion";
           localStorage.setItem("user", "student");
           localStorage.setItem("email", email);
           localStorage.setItem("login", true);
+          window.location.href = "/student/askquestion";
         })
         .catch((err) => {
           console.log(err);
