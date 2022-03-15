@@ -39,7 +39,7 @@ function UpdateQuestion(props) {
   const handleChange = async (e) => {
     e.preventDefault();
     if (questionTitle.length > 0 && questionDescription.length > 0 && image) {
-      const api = "http://localhost:5000/api/students/updatequestion";
+      const api = "https://meggchegg.herokuapp.com/api/students/updatequestion";
       const data = {
         id: localStorage.getItem("Update_question_id"),
         title: questionTitle,

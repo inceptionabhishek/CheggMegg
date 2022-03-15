@@ -9,7 +9,7 @@ function TutorSolvedQuestions() {
   const [solvedQuestions, setSolvedQuestions] = useState([]);
   useEffect(() => {
     axios
-      .post("http://localhost:5000/api/solved/view/tutor", {
+      .post("https://meggchegg.herokuapp.com/api/solved/view/tutor", {
         tutoremail: localStorage.getItem("email"),
       })
       .then((res) => {

@@ -6,7 +6,8 @@ import UnsolvedQuestionsList from "../../Components/Student/UnsolvedQuestionsLis
 function UnsolvedQuestions() {
   const email = localStorage.getItem("email");
   const [questions, setQuestions] = useState([]);
-  const uri = "http://localhost:5000/api/question/getunsolvedquestion";
+  const uri =
+    "https://meggchegg.herokuapp.com/api/question/getunsolvedquestion";
 
   useEffect(() => {
     axios

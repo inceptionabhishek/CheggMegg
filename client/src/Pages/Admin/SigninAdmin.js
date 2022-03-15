@@ -9,7 +9,7 @@ function SigninAdmin() {
   const handleFormSubmit = (event) => {
     event.preventDefault();
     axios
-      .post("http://localhost:5000/admin/validate", {
+      .post("https://meggchegg.herokuapp.com/admin/validate", {
         email: email,
         password: password,
       })

@@ -1,13 +1,14 @@
-import React, {useState,useEffect} from 'react'
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 function DisplayIndividualQuestion() {
   const [question, setQuestion] = useState({});
-  const question_id=localStorage.getItem("question_id");
-  const uri = "http://localhost:5000/api/question/getquestion";
+  const question_id = localStorage.getItem("question_id");
+  const uri = "https://meggchegg.herokuapp.com/api/question/getquestion";
   useEffect(() => {
-    axios.post(uri, {
-      question_id: question_id,
-    })
+    axios
+      .post(uri, {
+        question_id: question_id,
+      })
       .then((res) => {
         setQuestion(res.data);
       })
@@ -26,15 +27,18 @@ function DisplayIndividualQuestion() {
               </div>
               <div className="card-body">
                 <p>{question.questiondescription}</p>
-                <img src={question.questionimage} alt="question" width="400px" />
+                <img
+                  src={question.questionimage}
+                  alt="question"
+                  width="400px"
+                />
               </div>
             </div>
           </div>
         </div>
       </div>
-
     </>
-  )
+  );
 }
 
 export default DisplayIndividualQuestion;

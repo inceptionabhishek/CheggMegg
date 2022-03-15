@@ -9,7 +9,7 @@ function DisplayIndividualQuestionForTutor() {
   const [answer, setAnswer] = useState("");
   const [goodAlert, setGoodAlert] = useState(false);
   const question_id = localStorage.getItem("question_id");
-  const uri = "http://localhost:5000/api/question/getquestion";
+  const uri = "https://meggchegg.herokuapp.com/api/question/getquestion";
   useEffect(() => {
     axios
       .post(uri, {
@@ -27,7 +27,7 @@ function DisplayIndividualQuestionForTutor() {
         console.log(err);
       });
   }, []);
-  const api = "http://localhost:5000/api/solved/add/tutor";
+  const api = "https://meggchegg.herokuapp.com/api/solved/add/tutor";
   const timeOutFunction = () => {
     setGoodAlert(true);
   };

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 function AdminTutorlist() {
   const [tutors, setTutors] = useState([]);
-  const api = "http://localhost:5000/admin/getAllTutors";
+  const api = "https://meggchegg.herokuapp.com/admin/getAllTutors";
   useEffect(() => {
     axios.get(api).then((res) => {
       setTutors(res.data.tutors);

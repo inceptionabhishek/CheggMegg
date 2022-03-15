@@ -5,7 +5,7 @@ import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 
 function StudentProfile() {
-  const uri = "http://localhost:5000/api/students/getprofile";
+  const uri = "https://meggchegg.herokuapp.com/api/students/getprofile";
   const [profile, setProfile] = useState([]);
   const email = localStorage.getItem("email");
   useEffect(() => {

@@ -12,19 +12,26 @@ function LoggedAdmin() {
   // Api for TotalQuestionsasked = 'http://localhost:5000/admin/totalquestions'
   // Api for Total QuestionsSolvedAsked = 'http://localhost:5000/admin/solvedquestioncount'
   useEffect(() => {
-    axios.get("http://localhost:5000/admin/totalStudents").then((res) => {
-      setStudentsize(res.data.count);
-    });
-    axios.get("http://localhost:5000/admin/totalTutors").then((res) => {
-      setTutorsize(res.data.count);
-    });
-    axios.get("http://localhost:5000/admin/totalquestions").then((res) => {
-      setTotalQuestionasked(res.data.count);
-    });
-    axios.get("http://localhost:5000/admin/solvedquestioncount").then((res) => {
-      setTotalQuestionsAnswers(res.data.count);
-    }
-    );
+    axios
+      .get("https://meggchegg.herokuapp.com/admin/totalStudents")
+      .then((res) => {
+        setStudentsize(res.data.count);
+      });
+    axios
+      .get("https://meggchegg.herokuapp.com/admin/totalTutors")
+      .then((res) => {
+        setTutorsize(res.data.count);
+      });
+    axios
+      .get("https://meggchegg.herokuapp.com/admin/totalquestions")
+      .then((res) => {
+        setTotalQuestionasked(res.data.count);
+      });
+    axios
+      .get("https://meggchegg.herokuapp.com/admin/solvedquestioncount")
+      .then((res) => {
+        setTotalQuestionsAnswers(res.data.count);
+      });
   }, []);
 
   return (

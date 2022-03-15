@@ -46,7 +46,7 @@ function Signup() {
       setAllvalues(true);
     } else {
       await axios
-        .post("http://localhost:5000/api/students/add/newstudent", {
+        .post("https://meggchegg.herokuapp.com/api/students/add/newstudent", {
           username: username,
           name: name,
           email: email,

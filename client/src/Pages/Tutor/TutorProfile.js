@@ -3,7 +3,7 @@ import { Card, Button } from "react-bootstrap";
 import axios from 'axios';
 
 function TutorProfile() {
-    const uri = "http://localhost:5000/api/tutor/getprofile";
+    const uri = "https://meggchegg.herokuapp.com/api/tutor/getprofile";
     const [profile, setProfile] = useState([]);
     const email = localStorage.getItem("email");
     useEffect(() => {

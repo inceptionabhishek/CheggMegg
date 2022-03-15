@@ -4,7 +4,7 @@ import axios from 'axios';
 import SolvedQuestionsList from '../../Components/Student/SolvedQuestionsList';
 function SolvedQuestions() {
   const [solved,setSolved]=useState([]);
-  const api = "http://localhost:5000/api/solved/view/student";
+  const api = "https://meggchegg.herokuapp.com/api/solved/view/student";
   useEffect(()=>{
     axios.post(api,{
       studentemail:localStorage.getItem('email')

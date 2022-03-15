@@ -4,7 +4,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import {Button} from '@mui/material'
 function LoggedTutor() {
-  const api = "http://localhost:5000/api/tutor/getallquestions";
+  const api = "https://meggchegg.herokuapp.com/api/tutor/getallquestions";
   const [questions, setQuestions] = useState([]);
   const tutoremail = localStorage.getItem("email");
   const [questionId, setQuestionId] = useState("");

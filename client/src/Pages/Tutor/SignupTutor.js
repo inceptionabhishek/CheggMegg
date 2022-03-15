@@ -34,7 +34,7 @@ function SignupTutor() {
           console.log(data);
         });
       await axios
-        .post("http://localhost:5000/api/tutor/add/newtutor", {
+        .post("https://meggchegg.herokuapp.com/api/tutor/add/newtutor", {
           username: username,
           name: name,
           email: email,

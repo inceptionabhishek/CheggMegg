@@ -22,7 +22,8 @@ function UnsolvedQuestionsList(props) {
   const handler = () => {
     localStorage.setItem("question_id", props.question_id);
   };
-  const apidelete = "http://localhost:5000/api/students/deletequestion";
+  const apidelete =
+    "https://meggchegg.herokuapp.com/api/students/deletequestion";
   const HandlerDelete = () => {
     axios
       .post(apidelete, {
