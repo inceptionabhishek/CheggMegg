@@ -8,10 +8,10 @@ import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
 function NavbarComponent() {
   return (
     <>
-      <Navbar bg="dark" expand="lg">
+      <Navbar className="navbar" expand="lg">
         <Container fluid>
           <Link to="/" className="links">
-            Chegg Clone
+            <h1>MeggChegg</h1>
           </Link>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">

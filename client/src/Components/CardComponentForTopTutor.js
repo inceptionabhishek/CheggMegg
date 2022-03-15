@@ -19,9 +19,11 @@ import AppBar from "@mui/material/AppBar";
 import { Link } from "@mui/material";
 import thumbpic from "../Images/thumbpic.jpg";
 import Chip from "@mui/material/Chip";
-import BlogLists from './BlogLists';
+import BlogLists from "./BlogLists";
 
 function CardComponentForTopTutor(props) {
+  const toptutor= props.Data;
+  console.log(toptutor);
   return (
     <>
       <Grid item xs={12} sm={6} md={4} lg={4} xl={2}>
@@ -35,14 +37,15 @@ function CardComponentForTopTutor(props) {
           bgcolor="background.paper"
           boxShadow={3}
         >
-          <img src={props.Data[0].image} alt=""></img>
+          <img
+            src={toptutor[0].profileimage}
+            alt=""
+            className="image-thumbnail"
+          ></img>
           <Stack spacing={2}>
-            <Typography variant="h6">Name : {props.Data[0].name}</Typography>
+            <Typography variant="h6">Name : {toptutor[0].name}</Typography>
             <Typography variant="body2">
-              Rating : <Chip label={props.Data[0].Rating} color="primary" />
-            </Typography>
-            <Typography variant="body2">
-              Questions Solved :{props.Data[0].QuestionsSolved}
+              Questions Solved :{toptutor[0].totalquestionanswered}
             </Typography>
           </Stack>
           <Typography variant="h5"></Typography>
@@ -59,22 +62,20 @@ function CardComponentForTopTutor(props) {
           bgcolor="background.paper"
           boxShadow={3}
         >
-          <img src={props.Data[1].image} alt=""></img>
+          <img
+            src={toptutor[1].profileimage}
+            alt=""
+            className="image-thumbnail"
+          ></img>
           <Stack spacing={2}>
-            <Typography variant="h6">Name : {props.Data[1].name}</Typography>
+            <Typography variant="h6">Name : {toptutor[1].name}</Typography>
             <Typography variant="body2">
-              Rating : <Chip label={props.Data[1].Rating} color="primary" />
-            </Typography>
-            <Typography variant="body2">
-              Questions Solved :{props.Data[1].QuestionsSolved}
+              Questions Solved :{toptutor[1].totalquestionanswered}
             </Typography>
           </Stack>
           <Typography variant="h5"></Typography>
         </Box>
       </Grid>
-
-
-    
     </>
   );
 }

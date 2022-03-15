@@ -18,6 +18,7 @@ import IconButton from "@mui/material/IconButton";
 import AppBar from "@mui/material/AppBar";
 import { Link } from "@mui/material";
 import thumbpic from "../Images/thumbpic.jpg";
+import img1 from "../Images/img1.jpg";
 import Chip from "@mui/material/Chip";
 function CardComponent(props) {
   return (
@@ -30,10 +31,15 @@ function CardComponent(props) {
           justifyContent="center"
           p={2}
           m={1}
+          height="500px"
           bgcolor="background.paper"
           boxShadow={3}
         >
-          <img src={thumbpic} className="image-thumbnail" alt="Thumbnail"></img>
+          <img
+            src={props.image}
+            className="image-thumbnail"
+            alt="Thumbnail"
+          ></img>
           <Typography variant="h5">
             <Chip label={props.Title} color="primary" />
           </Typography>
