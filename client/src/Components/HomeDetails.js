@@ -59,7 +59,9 @@ function HomeDetails() {
         <p className="details-desciptions-text">{Texts[0]}</p>
       </div>
       <div className="Top-Section">
-        <h5 className="text-top-section">Subjects</h5>
+        <h5 className="text-top-section">Subjects 
+        <img src="https://i.gifer.com/1V8t.gif" height="100px"alt="" />
+        </h5>
       </div>
       {loading ? (
         <>
@@ -123,7 +125,7 @@ function HomeDetails() {
           />
         );
       })}
-    </>
+     </>
   );
 }
 

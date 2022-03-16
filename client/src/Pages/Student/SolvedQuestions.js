@@ -21,7 +21,7 @@ function SolvedQuestions() {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [solved]);
 
   const tempimage =
     "https://res.cloudinary.com/dkeiewkz6/image/upload/v1646113532/rkvgtstl4xdqcey0x8lr.png";
@@ -33,22 +33,34 @@ function SolvedQuestions() {
       {loading ? (
         <>
           <div className="spinner">
-            <Spinner animation="border" variant="primary" />
+            <Spinner
+              animation="border"
+              variant="primary"
+              className="TempSpinner"
+            />
           </div>
         </>
       ) : (
         <>
-          {solved.map((question) => (
-            <SolvedQuestionsList
-              id={question._id}
-              title={question.questionTitle}
-              image={question.questionImage}
-              description={question.questionDescription}
-              tutoremail={question.tutoremail}
-              tutorans={question.tutorans}
-              student={question.studentemail}
-            />
-          ))}
+          {solved.length === 0 ? (
+            <div className="divquestionlist">
+              <Typography variant="h5" component="h2">
+                No Solved Questions
+              </Typography>
+            </div>
+          ) : (
+            solved.map((question) => (
+              <SolvedQuestionsList
+                id={question._id}
+                title={question.questionTitle}
+                image={question.questionImage}
+                description={question.questionDescription}
+                tutoremail={question.tutoremail}
+                tutorans={question.tutorans}
+                student={question.studentemail}
+              />
+            ))
+          )}
         </>
       )}
     </>

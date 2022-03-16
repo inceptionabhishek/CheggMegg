@@ -33,6 +33,7 @@ import ViewAnswer from "./Pages/Tutor/ViewAnswer";
 import ViewAnswers from "./Pages/Student/ViewAnswers";
 import AllQuestionsAsked from "./Pages/Admin/AllQuestionsAsked";
 import Blog1 from "./Pages/Blogs/Blog1";
+import Error from "./Pages/Error";
 function App() {
   const [loggedIn, setLoggedIn] = useState(
     localStorage.getItem("login") === "true" ? true : false || false
@@ -102,7 +103,7 @@ function App() {
           <Route path="/admin/studentlist" element={<AdminStudentlist />} />
           <Route path="/admin/tutorlist" element={<AdminTutorlist />} />
           <Route path="/admin/allquestions" element={<AllQuestionsAsked />} />
-          // Blogs Routes
+          <Route path="*" element={<Error />} />
         </Route>
       </Routes>
     </>

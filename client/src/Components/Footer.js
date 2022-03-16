@@ -12,6 +12,7 @@ function Footer() {
         <a href="https://github.com/inceptionabhishek">
           <GitHubIcon />
         </a>
+        
         <a href="https://www.linkedin.com/in/inceptionabhi/">
           <LinkedInIcon />
         </a>

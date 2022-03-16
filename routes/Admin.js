@@ -1,39 +1,38 @@
-const express= require('express');
+const express = require("express");
 const router = express.Router();
-const Admin = require('../models/Admin.js');
-const QuestionDatabase = require('../models/QuestionDatabase.js');
-const Tutor = require('../models/Tutor.js');
-const Student = require('../models/Student.js');
+const Admin = require("../models/Admin.js");
+const QuestionDatabase = require("../models/QuestionDatabase.js");
+const Tutor = require("../models/Tutor.js");
+const Student = require("../models/Student.js");
 const SolvedQuestions = require("../models/SolvedQuestionDataBase.js");
 
-
 // Validate a Admin :-
-router.route('/validate').post((req,res)=>{
-    Admin.findOne({email:req.body.email,password:req.body.password},(err,admin)=>{
-        if(err){
-            res.json({msg:"error"});
+router.route("/validate").post((req, res) => {
+  Admin.findOne(
+    { email: req.body.email, password: req.body.password },
+    (err, admin) => {
+      if (err) {
+        res.json({ msg: "error" });
+      } else {
+        if (admin) {
+          console.log(admin);
+          res.json({ msg: "success" });
+        } else {
+          res.json({ msg: "error" });
         }
-        else{
-            if(admin){
-                console.log(admin);
-                res.json({msg:"success"});
-            }
-            else{
-                res.json({msg:"error"});
-            }
-        }
-    });
+      }
+    }
+  );
 });
 // Total Studenst registed :-
-router.route('/totalStudents').get((req,res)=>{
-    Student.find({},(err,students)=>{
-        if(err){
-            res.json({msg:"error"});
-        }
-        else{
-            res.json({msg:"success",count:students.length});
-        }
-    });
+router.route("/totalStudents").get((req, res) => {
+  Student.find({}, (err, students) => {
+    if (err) {
+      res.json({ msg: "error" });
+    } else {
+      res.json({ msg: "success", count: students.length });
+    }
+  });
 });
 // Total Tutors registered :-
 router.route("/totalTutors").get((req, res) => {
@@ -67,7 +66,7 @@ router.route("/solvedquestioncount").get((req, res) => {
   });
 });
 
-// Get All students 
+// Get All students
 router.route("/getAllStudents").get((req, res) => {
   Student.find({}, (err, students) => {
     if (err) {
@@ -108,7 +107,21 @@ router.route("/getTopTutors").get((req, res) => {
   });
 });
 
+// Get Questionscount by Student
+router.route("/getQuestionsCountByStudent").get((req, res) => {
+  console.log(req.body.email);
+  QuestionDatabase.find(
+    {
+      studentwhoaskedemail: req.body.email,
+    },
+    (err, questions) => {
+      if (err) {
+        res.json({ msg: "error" });
+      } else {
+        res.json({ msg: "success", questions: questions.length });
+      }
+    }
+  );
+});
 
-
-
-module.exports=router;
+module.exports = router;
