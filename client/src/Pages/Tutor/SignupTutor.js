@@ -1,25 +1,29 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
+import { Button, Form, Spinner } from "react-bootstrap";
 import AssignmentIndIcon from "@mui/icons-material/AssignmentInd";
 function SignupTutor() {
   const [username, setUsername] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [image, setImage] = useState("");
+  const [uploaded, setUploaded] = useState(false);
   const [password, setPassword] = useState("");
   const [allvalues, setAllvalues] = useState(false);
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
-    if (
-      username === "" ||
-      name === "" ||
-      email === "" ||
-      password === "" ||
-      image === ""
-    ) {
+  const [fakedata, setFakedata] = useState([]);
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    axios.get("https://randomuser.me/api/").then((res) => {
+      setFakedata(res.data.results);
+      setLoading(false);
+    });
+  }, []);
+  const HandlerFunction = async () => {
+    if (image === "") {
       setAllvalues(true);
     } else {
+      setUploaded(true);
       const formData = new FormData();
       formData.append("file", image);
       formData.append("upload_preset", "CheggClone");
@@ -32,7 +36,23 @@ function SignupTutor() {
         .then((data) => {
           setImage(data.url);
           console.log(data);
+          setUploaded(false);
         });
+    }
+    setUploaded(false);
+  };
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    if (
+      username === "" ||
+      name === "" ||
+      email === "" ||
+      password === "" ||
+      image === ""
+    ) {
+      setAllvalues(true);
+    } else {
       await axios
         .post("https://meggchegg.herokuapp.com/api/tutor/add/newtutor", {
           username: username,
@@ -54,96 +74,132 @@ function SignupTutor() {
     }
   };
   return (
-    <div className="container">
-      <div class="row">
-        <div class="col-md-4 col-lg-3"></div>
-        <div class="col-md-8 col-lg-6">
-          <h1 className="text-center">Sign Up Tutor</h1>
-          <div class="demo-content bg-alt">
-            <form onSubmit={handleFormSubmit}>
-              <div class="form-group">
-                <label for="exampleInputEmail1">Name </label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="userNameId"
-                  aria-describedby="userNameHelp"
-                  placeholder="Enter Your UserName"
-                  onChange={(event) => setName(event.target.value)}
-                  value={name}
-                />
-              </div>
-              <div class="form-group">
-                <label for="exampleInputEmail1">UserName</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="userNameId"
-                  aria-describedby="userNameHelp"
-                  placeholder="Enter Your UserName"
-                  onChange={(event) => setUsername(event.target.value)}
-                  value={username}
-                />
-              </div>
-              <div class="form-group">
-                <label for="exampleInputEmail1">Email </label>
-                <input
-                  type="email"
-                  class="form-control"
-                  id="userNameId"
-                  aria-describedby="userNameHelp"
-                  placeholder="Enter Your UserName"
-                  onChange={(event) => setEmail(event.target.value)}
-                  value={email}
-                />
-              </div>
-              <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input
-                  type="password"
-                  class="form-control"
-                  id="examplePassword"
-                  aria-describedby="passwordHelp"
-                  placeholder="Password"
-                  onChange={(event) => setPassword(event.target.value)}
-                  value={password}
-                />
-              </div>
-              Please Select One of the Following..
-              <div class="form-check">
-                <p className="details-desciptions-text">
-                  Please Add Your Profile Image
-                  <AssignmentIndIcon />
-                </p>
-                <input
-                  type="file"
-                  onChange={(event) => setImage(event.target.files[0])}
-                />
-              </div>
-              {allvalues === true ? (
-                <>
-                  <div class="alert">
-                    <span class="closebtn" onClick={() => setAllvalues(false)}>
-                      &times;
-                    </span>
-                    <strong>Please!</strong> Fill All the Fields :(
-                  </div>
-                </>
-              ) : (
-                <></>
-              )}
-              <button
-                onClick={handleFormSubmit}
-                type="submit"
-                class="btn btn-primary"
-              >
-                Submit
-              </button>
-            </form>
+    <>
+      {loading ? (
+        <>
+          <div className="spinner">
+            <Spinner
+              animation="border"
+              variant="primary"
+              className="TempSpinner"
+            />
           </div>
-        </div>
-      </div>
-    </div>
+        </>
+      ) : (
+        <>
+          <div className="container">
+            <div class="row">
+              <div class="col-md-4 col-lg-3"></div>
+              <div class="col-md-8 col-lg-6">
+                <h1 className="text-center">Sign Up Tutor</h1>
+                <div class="demo-content bg-alt">
+                  <form onSubmit={handleFormSubmit}>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Name </label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="userNameId"
+                        aria-describedby="userNameHelp"
+                        placeholder="Enter Your UserName"
+                        onChange={(event) => setName(event.target.value)}
+                        value={name}
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">UserName</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="userNameId"
+                        aria-describedby="userNameHelp"
+                        placeholder="Enter Your UserName"
+                        onChange={(event) => setUsername(event.target.value)}
+                        value={username}
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Email </label>
+                      <input
+                        type="email"
+                        class="form-control"
+                        id="userNameId"
+                        aria-describedby="userNameHelp"
+                        placeholder="Enter Your UserName"
+                        onChange={(event) => setEmail(event.target.value)}
+                        value={email}
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Password</label>
+                      <input
+                        type="password"
+                        class="form-control"
+                        id="examplePassword"
+                        aria-describedby="passwordHelp"
+                        placeholder="Password"
+                        onChange={(event) => setPassword(event.target.value)}
+                        value={password}
+                      />
+                    </div>
+
+                    <div class="form-check">
+                      <p className="details-desciptions-text">
+                        Please Add Your Profile Image
+                        <AssignmentIndIcon />
+                      </p>
+                      <input
+                        type="file"
+                        onChange={(event) => setImage(event.target.files[0])}
+                      />
+                      <Button variant="primary" onClick={HandlerFunction}>
+                        Upload Image to database
+                      </Button>
+                      {uploaded === true ? (
+                        <Button variant="primary" disabled>
+                          <Spinner
+                            as="span"
+                            animation="grow"
+                            size="sm"
+                            role="status"
+                            aria-hidden="true"
+                          />
+                          Loading...
+                        </Button>
+                      ) : (
+                        <></>
+                      )}
+                    </div>
+                    {allvalues === true ? (
+                      <>
+                        <div class="alert">
+                          <span
+                            class="closebtn"
+                            onClick={() => setAllvalues(false)}
+                          >
+                            &times;
+                          </span>
+                          <strong>Please!</strong> Fill All the Fields :(
+                        </div>
+                      </>
+                    ) : (
+                      <></>
+                    )}
+                    <button
+                      onClick={handleFormSubmit}
+                      type="submit"
+                      class="btn btn-primary"
+                    >
+                      Submit
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
+    </>
   );
 }
 

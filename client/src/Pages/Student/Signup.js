@@ -136,7 +136,7 @@ function Signup() {
                         onChange={(event) => setPassword(event.target.value)}
                       />
                     </div>
-                    Please Select One of the Following..
+
                     <div class="form-check">
                       <p className="details-desciptions-text">
                         Please Add Your Profile Image
@@ -146,15 +146,11 @@ function Signup() {
                         type="file"
                         onChange={(event) => setImage(event.target.files[0])}
                       />
-                      <Button
-                        variant="primary"
-                        type="submit"
-                        onClick={HandlerFunction}
-                      >
+                      <Button variant="primary" onClick={HandlerFunction}>
                         Upload Image to database
                       </Button>
                       {uploaded === true ? (
-                        <Button variant="primary" disabled>
+                        <button variant="primary" disabled>
                           <Spinner
                             as="span"
                             animation="grow"
@@ -163,7 +159,7 @@ function Signup() {
                             aria-hidden="true"
                           />
                           Loading...
-                        </Button>
+                        </button>
                       ) : (
                         <></>
                       )}
