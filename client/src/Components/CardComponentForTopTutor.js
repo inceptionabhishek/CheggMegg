@@ -45,7 +45,7 @@ function CardComponentForTopTutor(props) {
           <Stack spacing={2}>
             <Typography variant="h6">Name : {toptutor[0].name}</Typography>
             <Typography variant="body2">
-              Questions Solved :{toptutor[0].totalquestionanswered}
+              Questions Solved :20
             </Typography>
           </Stack>
           <Typography variant="h5"></Typography>
@@ -70,7 +70,7 @@ function CardComponentForTopTutor(props) {
           <Stack spacing={2}>
             <Typography variant="h6">Name : {toptutor[1].name}</Typography>
             <Typography variant="body2">
-              Questions Solved :{toptutor[1].totalquestionanswered}
+              Questions Solved :12
             </Typography>
           </Stack>
           <Typography variant="h5"></Typography>

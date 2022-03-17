@@ -34,7 +34,7 @@ import ViewAnswers from "./Pages/Student/ViewAnswers";
 import AllQuestionsAsked from "./Pages/Admin/AllQuestionsAsked";
 import Blog1 from "./Pages/Blogs/Blog1";
 import Error from "./Pages/Error";
-import Loginauth from './Pages/Auth/Loginauth';
+import Loginauth from "./Pages/Auth/Loginauth";
 import Signupauth from "./Pages/Auth/Signupauth";
 
 function App() {
@@ -62,7 +62,6 @@ function App() {
         (loggedInStudent && <NavbarForStudent />) ||
         (loggedInAdmin && <NavbarForAdmin />)}
       <Routes>
-        // Without Login Routes
         <Route path="/" element={<Home />} />
         <Route path="/blog" element={<Blog1 />} />
         <Route path="/loginauth" element={<Loginauth />} />
@@ -72,7 +71,6 @@ function App() {
         <Route path="/signin/admin" element={<SigninAdmin />} />
         <Route path="/signin/tutor" element={<SigninTutor />} />
         <Route path="/signup/tutor" element={<SignupTutor />} />
-        // With Login Routes // Student Routes
         <Route element={<Notlogin />}>
           <Route path="/student/askquestion" element={<LoggedStudent />} />
           <Route path="/student/profile" element={<StudentProfile />} />
@@ -91,7 +89,6 @@ function App() {
           <Route path="/students/updatequestion" element={<UpdateQuestion />} />
           <Route path="/students/updateprofile" element={<UpdateProfile />} />
           <Route path="/student/viewanswer" element={<ViewAnswers />} />
-          // With Login Routes // Tutor Routes
           <Route path="/tutorprofile" element={<TutorProfile />} />
           <Route
             path="/tutor/solvedquestions"
@@ -103,7 +100,6 @@ function App() {
             path="/tutor/getquestion"
             element={<DisplayIndividualQuestionForTutor />}
           />
-          // With Login Routes // Admin Routes
           <Route path="/admin" element={<LoggedAdmin />} />
           <Route path="/admin/studentlist" element={<AdminStudentlist />} />
           <Route path="/admin/tutorlist" element={<AdminTutorlist />} />

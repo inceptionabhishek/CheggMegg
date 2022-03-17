@@ -7,6 +7,10 @@ const StudentSchema = new Schema({
   email: String,
   password: String,
   profileimage: String,
-  totalquestionsaksed:Number
+  totalquestionsaksed:Number,
+  AmountInvested:{
+    type:Number,
+    default:0
+  }
 });
 module.exports = mongoose.model("Student", StudentSchema);

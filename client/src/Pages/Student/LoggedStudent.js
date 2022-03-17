@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
 import { Button, Form, Spinner } from "react-bootstrap";
-
+import Box from "@mui/material/Box";
+import Slider from "@mui/material/Slider";
 import axios from "axios";
 
 function LoggedStudent() {
@@ -12,6 +13,7 @@ function LoggedStudent() {
   const [alert, setAlert] = useState(false);
   const [goodAlert, setGoodAlert] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [cost, setCost] = useState(100);
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
@@ -125,6 +127,7 @@ function LoggedStudent() {
                 <></>
               )}
             </Form.Group>
+
             <Form.Group
               className="mb-3"
               controlId="exampleForm.ControlInput1"
@@ -151,6 +154,7 @@ function LoggedStudent() {
             ) : (
               <></>
             )}
+
             <div className="Top-Section">
               <button
                 type="submit"

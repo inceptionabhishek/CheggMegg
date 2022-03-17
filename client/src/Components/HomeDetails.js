@@ -31,7 +31,6 @@ function HomeDetails() {
   useEffect(() => {
     axios.get(toptutoruri).then((res) => {
       setTopTutor(res.data.tutors);
-
       setLoading2(false);
     });
   }, []);
