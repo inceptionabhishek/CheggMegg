@@ -65,51 +65,93 @@ function App() {
         (loggedInAdmin && <NavbarForAdmin />)}
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/blog" element={<Blog1 />} />
-        <Route path="/loginauth" element={<Loginauth />} />
-        <Route path="/signupauth" element={<Signupauth />} />
-        <Route path="/signin/student" element={<Signin />} />
-        <Route path="/signup/student" element={<Signup />} />
-        <Route path="/signin/admin" element={<SigninAdmin />} />
-        <Route path="/signin/tutor" element={<SigninTutor />} />
-        <Route path="/signup/tutor" element={<SignupTutor />} />
-        <Route element={<Notlogin />}>
-          <Route path="/student/askquestion" element={<LoggedStudent />} />
-          <Route path="/student/profile" element={<StudentProfile />} />
-          <Route
-            path="/student/solvedquestions"
-            element={<SolvedQuestions />}
-          />
-          <Route
-            path="/student/getquestion"
-            element={<DisplayIndividualQuestion />}
-          />
-          <Route
-            path="/student/unsolvedquestions"
-            element={<UnsolvedQuestions />}
-          />
-          <Route path="/students/updatequestion" element={<UpdateQuestion />} />
-          <Route path="/students/updateprofile" element={<UpdateProfile />} />
-          <Route path="/student/viewanswer" element={<ViewAnswers />} />
-          <Route path="/tutorprofile" element={<TutorProfile />} />
-          <Route
-            path="/tutor/solvedquestions"
-            element={<TutorSolvedQuestions />}
-          />
-          <Route path="/tutor/viewanswer" element={<ViewAnswer />} />
-          <Route path="/tutor/answerquestion" element={<Tutor />} />
-          <Route
-            path="/tutor/getquestion"
-            element={<DisplayIndividualQuestionForTutor />}
-          />
-
-          <Route path="/admin" element={<LoggedAdmin />} />
-          <Route path="/admin/studentlist" element={<AdminStudentlist />} />
-          <Route path="/admin/tutorlist" element={<AdminTutorlist />} />
-          <Route path="/admin/allquestions" element={<AllQuestionsAsked />} />
-
-          <Route path="*" element={<Error />} />
-        </Route>
+        {notLoggedIn ? (
+          <>
+            <Route path="/blog" element={<Blog1 />} />
+            <Route path="/loginauth" element={<Loginauth />} />
+            <Route path="/signupauth" element={<Signupauth />} />
+            <Route path="/signin/student" element={<Signin />} />
+            <Route path="/signup/student" element={<Signup />} />
+            <Route path="/signin/admin" element={<SigninAdmin />} />
+            <Route path="/signin/tutor" element={<SigninTutor />} />
+            <Route path="/signup/tutor" element={<SignupTutor />} />
+          </>
+        ) : (
+          <>
+            {loggedInStudent ? (
+              <>
+                <Route
+                  path="/student/askquestion"
+                  element={<LoggedStudent />}
+                />
+                <Route path="/student/profile" element={<StudentProfile />} />
+                <Route
+                  path="/student/solvedquestions"
+                  element={<SolvedQuestions />}
+                />
+                <Route
+                  path="/student/getquestion"
+                  element={<DisplayIndividualQuestion />}
+                />
+                <Route
+                  path="/student/unsolvedquestions"
+                  element={<UnsolvedQuestions />}
+                />
+                <Route
+                  path="/students/updatequestion"
+                  element={<UpdateQuestion />}
+                />
+                <Route
+                  path="/students/updateprofile"
+                  element={<UpdateProfile />}
+                />
+                <Route path="/student/viewanswer" element={<ViewAnswers />} />
+              </>
+            ) : (
+              <>
+                {loggedInTutor ? (
+                  <>
+                    <Route path="/tutorprofile" element={<TutorProfile />} />
+                    <Route
+                      path="/tutor/solvedquestions"
+                      element={<TutorSolvedQuestions />}
+                    />
+                    <Route path="/tutor/viewanswer" element={<ViewAnswer />} />
+                    <Route path="/tutor/answerquestion" element={<Tutor />} />
+                    <Route
+                      path="/tutor/getquestion"
+                      element={<DisplayIndividualQuestionForTutor />}
+                    />
+                  </>
+                ) : (
+                  <>
+                    {loggedInAdmin ? (
+                      <>
+                        <Route path="/admin" element={<LoggedAdmin />} />
+                        <Route
+                          path="/admin/studentlist"
+                          element={<AdminStudentlist />}
+                        />
+                        <Route
+                          path="/admin/tutorlist"
+                          element={<AdminTutorlist />}
+                        />
+                        <Route
+                          path="/admin/allquestions"
+                          element={<AllQuestionsAsked />}
+                        />
+                      </>
+                    ) : (
+                      <>
+                        <Route path="*" element={<Error />} />
+                      </>
+                    )}
+                  </>
+                )}
+              </>
+            )}
+          </>
+        )}
       </Routes>
     </>
   );
