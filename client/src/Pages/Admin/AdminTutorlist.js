@@ -6,17 +6,20 @@ import axios from "axios";
 function AdminTutorlist() {
   const [tutors, setTutors] = useState([]);
   const [loading, setLoading] = useState(true);
+  const api = "https://meggchegg.herokuapp.com/admin/getAllTutors";
   useEffect(() => {
-    setTimeout(() => {
+    axios.get(api).then((res) => {
+      setTutors(res.data.tutors);
+      console.log(res.data.tutors);
       setLoading(false);
-    }, 1000);
+    });
   }, []);
   return (
     <>
       {loading ? (
         <>
           <div className="spinner">
-            <Spinner animation="border" variant="primary" />
+            <Spinner animation="border" variant="primary" className="TempSpinner" />
           </div>
         </>
       ) : (

@@ -138,5 +138,33 @@ router.route("/getQuestionsSolvedCountByTutor").post((req, res) => {
     }
   );
 });
+// View Student Profile
+router.route("/viewStudentProfile").post((req, res) => {
+  Student.findOne({ email: req.body.email }, (err, student) => {
+    if (err) {
+      res.json({ msg: "error" });
+    } else {
+      if (student) {
+        res.json({ msg: "success", student: student });
+      } else {
+        res.json({ msg: "error" });
+      }
+    }
+  });
+});
+// View Tutor Profile
+router.route("/viewtutorprofile").post((req, res) => {
+  Tutor.findOne({ email: req.body.email }, (err, tutor) => {
+    if (err) {
+      res.json({ msg: "error" });
+    } else {
+      if (tutor) {
+        res.json({ msg: "success", tutor: tutor });
+      } else {
+        res.json({ msg: "error" });
+      }
+    }
+  });
+});
 
 module.exports = router;

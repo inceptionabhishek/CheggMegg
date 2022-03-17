@@ -6,11 +6,14 @@ import axios from "axios";
 function AdminStudentlist() {
   const [students, setStudents] = useState([]);
   const [loading, setLoading] = useState(true);
-useEffect(() => {
-  setTimeout(() => {
-    setLoading(false);
-  }, 1000);
-}, []);
+  const api = "https://meggchegg.herokuapp.com/admin/getAllStudents";
+  useEffect(() => {
+    axios.get(api).then((res) => {
+      setStudents(res.data.students);
+      console.log(res.data.students);
+      setLoading(false);
+    });
+  }, []);
 
   return (
     <>

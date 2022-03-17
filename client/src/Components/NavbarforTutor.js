@@ -14,7 +14,7 @@ function NavbarforTutor() {
     };
   return (
     <>
-      <Navbar bg="dark" expand="lg">
+      <Navbar className="navbar" expand="lg">
         <Container fluid>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">

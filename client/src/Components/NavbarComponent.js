@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import HomeIcon from "@mui/icons-material/Home";
 import LoginIcon from "@mui/icons-material/Login";
 import VpnKeyIcon from "@mui/icons-material/VpnKey";
+import LockIcon from "@mui/icons-material/Lock";
 import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
 function NavbarComponent() {
   return (
@@ -21,10 +22,28 @@ function NavbarComponent() {
               navbarScroll
             ></Nav>
             <Nav className="ml-auto" navbarScroll>
-              <Nav className="me-auto">
+              <Link to="/loginauth" className="links">
+                Login
+                <VpnKeyIcon />
+              </Link>
+              <Link to="/signupauth" className="links">
+                Signup
+                <LockIcon />
+              </Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+    </>
+  );
+}
+
+export default NavbarComponent;
+
+/*
+ <Nav className="me-auto">
                 <Link to="/signin/student" className="links">
-                  SigninStudent
-                  <LoginIcon />
+
                 </Link>
                 <Link to="/signup/student" className="links">
                   SignupStudent
@@ -43,12 +62,4 @@ function NavbarComponent() {
                   <AdminPanelSettingsIcon />
                 </Link>
               </Nav>
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
-    </>
-  );
-}
-
-export default NavbarComponent;
+              */

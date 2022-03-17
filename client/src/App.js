@@ -34,6 +34,9 @@ import ViewAnswers from "./Pages/Student/ViewAnswers";
 import AllQuestionsAsked from "./Pages/Admin/AllQuestionsAsked";
 import Blog1 from "./Pages/Blogs/Blog1";
 import Error from "./Pages/Error";
+import Loginauth from './Pages/Auth/Loginauth';
+import Signupauth from "./Pages/Auth/Signupauth";
+
 function App() {
   const [loggedIn, setLoggedIn] = useState(
     localStorage.getItem("login") === "true" ? true : false || false
@@ -62,6 +65,8 @@ function App() {
         // Without Login Routes
         <Route path="/" element={<Home />} />
         <Route path="/blog" element={<Blog1 />} />
+        <Route path="/loginauth" element={<Loginauth />} />
+        <Route path="/signupauth" element={<Signupauth />} />
         <Route path="/signin/student" element={<Signin />} />
         <Route path="/signup/student" element={<Signup />} />
         <Route path="/signin/admin" element={<SigninAdmin />} />
