@@ -4,20 +4,11 @@ import Slider from "@mui/material/Slider";
 import { Grid, Typography } from "@mui/material";
 import Button from "@mui/material/Button";
 import { useState, useEffect } from "react";
-import Avatar from "@mui/material/Avatar";
-import Stack from "@mui/material/Stack";
-import { Route, Routes } from "react-router-dom";
-import Tooltip from "@mui/material/Tooltip";
-import MenuItem from "@mui/material/MenuItem";
-import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
-import Container from "@mui/material/Container";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import AppBar from "@mui/material/AppBar";
+import { Spinner } from "react-bootstrap";
 import {Link} from 'react-router-dom'
 
 function SolvedQuestionsListForTutor(props) {
+
   const saveinLocal = () =>{
     localStorage.setItem("TutorviewTitle",props.title);
     localStorage.setItem("TutorviewDescription",props.description);

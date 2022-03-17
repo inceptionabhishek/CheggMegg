@@ -123,5 +123,20 @@ router.route("/getQuestionsCountByStudent").get((req, res) => {
     }
   );
 });
+// Get QuestionSolved count by Tutor
+router.route("/getQuestionsSolvedCountByTutor").post((req, res) => {
+  SolvedQuestions.find(
+    {
+      tutoremail: req.body.email,
+    },
+    (err, questions) => {
+      if (err) {
+        res.json({ msg: "error" });
+      } else {
+        res.json({ msg: "success", questions: questions.length });
+      }
+    }
+  );
+});
 
 module.exports = router;

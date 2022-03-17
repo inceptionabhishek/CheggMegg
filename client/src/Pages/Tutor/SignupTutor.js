@@ -13,12 +13,11 @@ function SignupTutor() {
   const [allvalues, setAllvalues] = useState(false);
   const [fakedata, setFakedata] = useState([]);
   const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    axios.get("https://randomuser.me/api/").then((res) => {
-      setFakedata(res.data.results);
-      setLoading(false);
-    });
-  }, []);
+ useEffect(() => {
+   setTimeout(() => {
+     setLoading(false);
+   }, 1000);
+ }, []);
   const HandlerFunction = async () => {
     if (image === "") {
       setAllvalues(true);

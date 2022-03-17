@@ -10,10 +10,9 @@ function UnsolvedQuestions() {
   const [fakedata, setFakedata] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    axios.get("https://randomuser.me/api/").then((res) => {
-      setFakedata(res.data.results);
+    setTimeout(() => {
       setLoading(false);
-    });
+    }, 1000);
   }, []);
   const uri =
     "https://meggchegg.herokuapp.com/api/question/getunsolvedquestion";

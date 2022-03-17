@@ -13,6 +13,12 @@ function LoggedAdmin() {
   // Api for tutorsize = 'http://localhost:5000/admin/totalTutors'
   // Api for TotalQuestionsasked = 'http://localhost:5000/admin/totalquestions'
   // Api for Total QuestionsSolvedAsked = 'http://localhost:5000/admin/solvedquestioncount'
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  }, []);
   useEffect(() => {
     axios
       .get("https://meggchegg.herokuapp.com/admin/totalStudents")

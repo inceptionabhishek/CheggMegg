@@ -12,13 +12,10 @@ function LoggedStudent() {
   const [alert, setAlert] = useState(false);
   const [goodAlert, setGoodAlert] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [fakedata, setFakedata] = useState([]);
-  const ulrr = "https://randomuser.me/api/";
   useEffect(() => {
-    axios.get(ulrr).then((res) => {
-      setFakedata(res.data.results);
+    setTimeout(() => {
       setLoading(false);
-    });
+    }, 1000);
   }, []);
   const HandlerFunction = async (e) => {
     setUploaded(true);

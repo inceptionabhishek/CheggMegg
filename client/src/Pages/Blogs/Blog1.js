@@ -5,12 +5,11 @@ import { Spinner } from "react-bootstrap";
 function Blog1() {
   const [fakedata, setFakedata] = useState([]);
   const [loading, setLoading] = useState(true);
-  const url = "https://randomuser.me/api/";
+
   useEffect(() => {
-    axios.get(url).then((res) => {
-      setFakedata(res.data.results);
+    setTimeout(() => {
       setLoading(false);
-    });
+    }, 2000);
   }, []);
   return (
     <>

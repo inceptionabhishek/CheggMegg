@@ -6,16 +6,19 @@ function ViewAnswers(props) {
   const [fakedata, setFakedata] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    axios.get("https://randomuser.me/api/").then((res) => {
-      setFakedata(res.data.results);
+    setTimeout(() => {
       setLoading(false);
-    });
+    }, 1000);
   }, []);
   return (
     <>
       {loading ? (
         <div className="spinner">
-          <Spinner animation="border" variant="primary" className="TempSpinner" />
+          <Spinner
+            animation="border"
+            variant="primary"
+            className="TempSpinner"
+          />
         </div>
       ) : (
         <>

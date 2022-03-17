@@ -20,10 +20,9 @@ function UpdateQuestion(props) {
   const [fakedata, setFakedata] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    axios.get("https://randomuser.me/api/").then((res) => {
-      setFakedata(res.data.results);
+    setTimeout(() => {
       setLoading(false);
-    });
+    }, 1000);
   }, []);
   const HandlerFunction = async (e) => {
     setUploaded(true);

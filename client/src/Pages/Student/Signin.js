@@ -8,13 +8,12 @@ function Signin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [alert, setAlert] = useState(false);
-  const [fakedata, setFakedata] = useState([]);
+
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    axios.get("https://randomuser.me/api/").then((res) => {
-      setFakedata(res.data.results);
+    setTimeout(() => {
       setLoading(false);
-    });
+    }, 1000);
   }, []);
 
   const handleFormSubmit = async (event) => {

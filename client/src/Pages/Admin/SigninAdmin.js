@@ -9,12 +9,10 @@ function SigninAdmin() {
   const [alert, setAlert] = useState(false);
   const [loading, setLoading] = useState(true);
   const [fakeData,setFakedata]=useState([]);
-  const api = "https://randomuser.me/api/";
   useEffect(() => {
-    axios.get(api).then((res) => {
-      setFakedata(res.data.results);
-     setLoading(false);
-    });
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
   }, []);
 
 
