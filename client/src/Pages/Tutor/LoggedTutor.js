@@ -2,15 +2,13 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import {Button} from '@mui/material'
+import { Button } from "@mui/material";
 function LoggedTutor() {
   const api = "https://meggchegg.herokuapp.com/api/tutor/getallquestions";
   const [questions, setQuestions] = useState([]);
   const tutoremail = localStorage.getItem("email");
   const [questionId, setQuestionId] = useState("");
-  const handler = () => {
-
-  }
+  const handler = () => {};
   useEffect(() => {
     axios
       .post(api, {
@@ -23,7 +21,7 @@ function LoggedTutor() {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [questions]);
 
   return (
     <>
@@ -51,10 +49,10 @@ function LoggedTutor() {
                       <Button
                         variant="contained"
                         color="primary"
-                        onClick={()=>{
-                          localStorage.setItem("question_id", question._id)
+                        onClick={() => {
+                          localStorage.setItem("question_id", question._id);
                         }}
-                      > 
+                      >
                         View Question
                       </Button>
                     </Link>
