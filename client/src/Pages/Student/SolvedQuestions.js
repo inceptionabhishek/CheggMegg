@@ -14,8 +14,6 @@ function SolvedQuestions() {
       })
       .then((res) => {
         setSolved(res.data.data);
-        console.log(res.data);
-        console.log(localStorage.getItem("email"));
         setLoading(false);
       })
       .catch((err) => {

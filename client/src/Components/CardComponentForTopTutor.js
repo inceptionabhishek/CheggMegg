@@ -23,10 +23,10 @@ import BlogLists from "./BlogLists";
 
 function CardComponentForTopTutor(props) {
   const toptutor= props.Data;
-  console.log(toptutor);
+ 
   return (
     <>
-      <Grid item xs={12} sm={6} md={4} lg={4} xl={2}>
+      <Grid item xs={12} sm={6} md={4} lg={6} xl={2}>
         <Box
           display="flex"
           flexDirection="column"
@@ -51,7 +51,7 @@ function CardComponentForTopTutor(props) {
           <Typography variant="h5"></Typography>
         </Box>
       </Grid>
-      <Grid item xs={12} sm={6} md={4} lg={4} xl={2}>
+      <Grid item xs={12} sm={6} md={4} lg={6} xl={2}>
         <Box
           display="flex"
           flexDirection="column"

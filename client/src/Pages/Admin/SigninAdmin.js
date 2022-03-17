@@ -1,5 +1,5 @@
 import React from "react";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { Spinner } from "react-bootstrap";
 
@@ -8,13 +8,12 @@ function SigninAdmin() {
   const [password, setPassword] = useState("");
   const [alert, setAlert] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [fakeData,setFakedata]=useState([]);
+  const [fakeData, setFakedata] = useState([]);
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
     }, 1000);
   }, []);
-
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
@@ -24,7 +23,6 @@ function SigninAdmin() {
         password: password,
       })
       .then((response) => {
-        console.log(response.data.message);
         if (response.data.msg === "success") {
           setLoading(false);
           localStorage.setItem("user", "admin");
@@ -40,7 +38,11 @@ function SigninAdmin() {
       {loading ? (
         <>
           <div className="spinner">
-            <Spinner animation="border" variant="primary" className="TempSpinner" />
+            <Spinner
+              animation="border"
+              variant="primary"
+              className="TempSpinner"
+            />
           </div>
         </>
       ) : (

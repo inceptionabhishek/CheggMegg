@@ -17,7 +17,7 @@ function TutorSolvedQuestions() {
       })
       .then((res) => {
         setSolvedQuestions(res.data.data);
-        console.log(res.data.data);
+       
       })
       .catch((err) => {
         console.log(err);

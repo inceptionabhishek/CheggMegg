@@ -13,7 +13,6 @@ function StudentProfile() {
   const [totalquestionCount, setQuestionCount] = useState(0);
   const [fakedata, setFakedata] = useState([]);
   const [loading, setLoading] = useState(true);
-
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
@@ -26,7 +25,7 @@ function StudentProfile() {
       })
       .then((res) => {
         setQuestionCount(res.data.questions);
-        console.log(res.data.questions);
+        
       });
     axios
       .post(uri, {

@@ -10,7 +10,7 @@ function AdminTutorlist() {
   useEffect(() => {
     axios.get(api).then((res) => {
       setTutors(res.data.tutors);
-      console.log(res.data.tutors);
+     
       setLoading(false);
     });
   }, []);

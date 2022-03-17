@@ -34,7 +34,7 @@ function Signup() {
         .then((res) => res.json())
         .then((data) => {
           setImage(data.url);
-          console.log(data);
+          
           setUploaded(false);
         });
     }

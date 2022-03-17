@@ -1,7 +1,8 @@
 import React from "react";
 import TutorListAll from "../../Helpertexts/TempTutorList";
 import { useState, useEffect } from "react";
-import { Spinner } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { Button, Spinner } from "react-bootstrap";
 import axios from "axios";
 function AdminStudentlist() {
   const [students, setStudents] = useState([]);
@@ -10,7 +11,6 @@ function AdminStudentlist() {
   useEffect(() => {
     axios.get(api).then((res) => {
       setStudents(res.data.students);
-      console.log(res.data.students);
       setLoading(false);
     });
   }, []);
@@ -55,6 +55,7 @@ function AdminStudentlist() {
                                   className="img-fluid"
                                 />
                               </td>
+                              <td></td>
                             </tr>
                           ))}
                         </tbody>

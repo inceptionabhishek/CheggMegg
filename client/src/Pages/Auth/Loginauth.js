@@ -6,6 +6,7 @@ import { Button, Spinner } from "react-bootstrap";
 import { Route, Routes, Link } from "react-router-dom";
 import { Box } from "@mui/material";
 import Slider from "@mui/material/Slider";
+import Footer from "../../Components/Footer";
 import { Grid, Typography } from "@mui/material";
 function Loginauth() {
   return (
@@ -115,6 +116,7 @@ function Loginauth() {
           </Grid>
         </Grid>
       </div>
+     
     </>
   );
 }

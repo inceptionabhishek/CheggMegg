@@ -20,13 +20,6 @@ function Studentroute() {
   const [loggedInStudent, setLoggedInStudent] = useState(
     localStorage.getItem("user") === "student" || false
   );
-  console.log(loggedIn);
-  console.log(loggedInTutor);
-  console.log(loggedInAdmin);
-  console.log(loggedInStudent);
-  console.log(curruseremail);
-  console.log(notLoggedIn);
-  console.log(user);
   const useAuth = () => {
     return loggedInStudent === true ? true : false;
   };

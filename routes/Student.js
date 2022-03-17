@@ -92,7 +92,9 @@ router.route("/askquestion").post((req, res) => {
         QuestionImage: req.body.QuestionImage,
         answertext: req.body.answertext,
         answerimage: req.body.answerimage,
+        tag: req.body.tag,
       });
+      
       student
         .save()
         .then((result) => {

@@ -36,6 +36,8 @@ import Blog1 from "./Pages/Blogs/Blog1";
 import Error from "./Pages/Error";
 import Loginauth from "./Pages/Auth/Loginauth";
 import Signupauth from "./Pages/Auth/Signupauth";
+import ViewTutorProfile from "./Pages/Admin/ViewTutorProfile";
+import Viewstudentprofile from "./Pages/Admin/Viewstudentprofile";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(
@@ -100,10 +102,12 @@ function App() {
             path="/tutor/getquestion"
             element={<DisplayIndividualQuestionForTutor />}
           />
+
           <Route path="/admin" element={<LoggedAdmin />} />
           <Route path="/admin/studentlist" element={<AdminStudentlist />} />
           <Route path="/admin/tutorlist" element={<AdminTutorlist />} />
           <Route path="/admin/allquestions" element={<AllQuestionsAsked />} />
+
           <Route path="*" element={<Error />} />
         </Route>
       </Routes>

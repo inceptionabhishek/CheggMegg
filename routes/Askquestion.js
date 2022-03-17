@@ -8,6 +8,7 @@ router.post("/askquestion", async (req, res) => {
     questiondescription,
     questionimage,
     studentwhoaskedemail,
+    tag,
   } = req.body;
   const status = false;
   const teacherwhoanswered = [];
@@ -18,6 +19,7 @@ router.post("/askquestion", async (req, res) => {
     status,
     studentwhoaskedemail,
     teacherwhoanswered,
+    tag
   });
   await newQuestion
     .save()

@@ -118,7 +118,7 @@ router.route("/getQuestionsCountByStudent").get((req, res) => {
       if (err) {
         res.json({ msg: "error" });
       } else {
-        res.json({ msg: "success", questions: questions.length });
+        res.json({ msg: "success1", questions: questions.length });
       }
     }
   );
@@ -133,7 +133,7 @@ router.route("/getQuestionsSolvedCountByTutor").post((req, res) => {
       if (err) {
         res.json({ msg: "error" });
       } else {
-        res.json({ msg: "success", questions: questions.length });
+        res.json({ msg: "success2", questions: questions.length });
       }
     }
   );

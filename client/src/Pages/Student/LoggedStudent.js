@@ -4,6 +4,10 @@ import { Button, Form, Spinner } from "react-bootstrap";
 import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
 import axios from "axios";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
 
 function LoggedStudent() {
   const [image, setImage] = useState("");
@@ -13,6 +17,7 @@ function LoggedStudent() {
   const [alert, setAlert] = useState(false);
   const [goodAlert, setGoodAlert] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [tag, setTag] = useState("");
   const [cost, setCost] = useState(100);
   useEffect(() => {
     setTimeout(() => {
@@ -38,6 +43,9 @@ function LoggedStudent() {
       });
     setUploaded(false);
   };
+  const tagchange = (event) => {
+    setTag(event.target.value);
+  };
   const handleChange = async (e) => {
     e.preventDefault();
     if (questionTitle.length > 0 && questionDescription.length > 0) {
@@ -48,14 +56,15 @@ function LoggedStudent() {
         questiontitle: questionTitle,
         questiondescription: questionDescription,
         questionimage: image,
+        tag: tag,
       };
-
       await axios
         .post(api, data)
         .then((res) => {
-          console.log(res);
+         
           setLoading(false);
           setGoodAlert(true);
+          
         })
         .catch((err) => {
           console.log(err);
@@ -127,7 +136,23 @@ function LoggedStudent() {
                 <></>
               )}
             </Form.Group>
-
+            <FormControl fullWidth>
+              <InputLabel id="demo-simple-select-label">Tag </InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={tag}
+                label="Tag"
+                onChange={tagchange}
+              >
+                <MenuItem value="physics">Physics</MenuItem>
+                <MenuItem value="chemisty">Chemisty</MenuItem>
+                <MenuItem value="c++">c++</MenuItem>
+                <MenuItem value="java">java</MenuItem>
+                <MenuItem value="html">HTML/CSS</MenuItem>
+                <MenuItem value="react">React</MenuItem>
+              </Select>
+            </FormControl>
             <Form.Group
               className="mb-3"
               controlId="exampleForm.ControlInput1"

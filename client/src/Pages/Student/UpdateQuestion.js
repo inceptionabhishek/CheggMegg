@@ -38,7 +38,7 @@ function UpdateQuestion(props) {
       .then((res) => res.json())
       .then((data) => {
         setImage(data.url);
-        console.log(data);
+        
         setUploaded(false);
       });
     setUploaded(false);
@@ -57,7 +57,7 @@ function UpdateQuestion(props) {
       await axios
         .post(api, data)
         .then((res) => {
-          console.log(res);
+         
           setLoading(false);
           setGoodAlert(true);
         })
