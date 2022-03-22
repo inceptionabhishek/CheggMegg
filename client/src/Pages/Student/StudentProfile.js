@@ -25,7 +25,6 @@ function StudentProfile() {
       })
       .then((res) => {
         setQuestionCount(res.data.questions);
-        
       });
     axios
       .post(uri, {

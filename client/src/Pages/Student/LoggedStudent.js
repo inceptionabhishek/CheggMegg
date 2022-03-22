@@ -61,10 +61,8 @@ function LoggedStudent() {
       await axios
         .post(api, data)
         .then((res) => {
-         
           setLoading(false);
           setGoodAlert(true);
-          
         })
         .catch((err) => {
           console.log(err);
@@ -89,107 +87,103 @@ function LoggedStudent() {
         </>
       ) : (
         <>
-          <p className="askQuestion">Please ask your question here.</p>
-          <Form>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Question</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter Your Question Title Here"
-                value={questionTitle}
-                onChange={(e) => setQuestionTitle(e.target.value)}
-              />
-            </Form.Group>
-            <Form.Group
-              className="mb-3"
-              controlId="exampleForm.ControlTextarea1"
-            >
-              <Form.Label>Add description</Form.Label>
-              <Form.Control
-                as="textarea"
-                onChange={(e) => setQuestionDescription(e.target.value)}
-                rows={3}
-              />
-            </Form.Group>
-            <Form.Group className="mb-6" controlId="exampleForm.ControlInput1">
-              <Form.Label>Image of the Question(not necessary)</Form.Label>
-              <Form.Control
-                type="file"
-                placeholder="Image"
-                onChange={(event) => setImage(event.target.files[0])}
-              />
-              <Button variant="primary" type="submit" onClick={HandlerFunction}>
-                Upload Image to database
-              </Button>
-              {uploaded === true ? (
-                <Button variant="primary" disabled>
-                  <Spinner
-                    as="span"
-                    animation="grow"
-                    size="sm"
-                    role="status"
-                    aria-hidden="true"
-                  />
-                  Loading...
+          <div className="container">
+            <p className="askQuestion">Please ask your question here.</p>
+            <Form>
+              <Form.Group
+                className="mb-3"
+                controlId="exampleForm.ControlInput1"
+              >
+                <Form.Label>Question</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Enter Your Question Title Here"
+                  value={questionTitle}
+                  onChange={(e) => setQuestionTitle(e.target.value)}
+                />
+              </Form.Group>
+              <Form.Group
+                className="mb-3"
+                controlId="exampleForm.ControlTextarea1"
+              >
+                <Form.Label>Add description</Form.Label>
+                <Form.Control
+                  as="textarea"
+                  onChange={(e) => setQuestionDescription(e.target.value)}
+                  rows={3}
+                />
+              </Form.Group>
+              <Form.Group
+                className="mb-6"
+                controlId="exampleForm.ControlInput1"
+              >
+                <Form.Label>Image of the Question(not necessary)</Form.Label>
+                <Form.Control
+                  type="file"
+                  placeholder="Image"
+                  onChange={(event) => setImage(event.target.files[0])}
+                />
+                <Button
+                  variant="primary"
+                  type="submit"
+                  onClick={HandlerFunction}
+                >
+                  Upload Image to database
                 </Button>
+                {uploaded === true ? (
+                  <Button variant="primary" disabled>
+                    <Spinner
+                      as="span"
+                      animation="grow"
+                      size="sm"
+                      role="status"
+                      aria-hidden="true"
+                    />
+                    Loading...
+                  </Button>
+                ) : (
+                  <></>
+                )}
+              </Form.Group>
+
+              <Form.Group
+                className="mb-3"
+                controlId="exampleForm.ControlInput1"
+              ></Form.Group>
+              {alert === true ? (
+                <>
+                  <div class="alert">
+                    <span class="closebtn" onClick={() => setAlert(false)}>
+                      &times;
+                    </span>
+                    <strong>:( </strong>Please fill all the fields
+                  </div>
+                </>
               ) : (
                 <></>
               )}
-            </Form.Group>
-            <FormControl fullWidth>
-              <InputLabel id="demo-simple-select-label">Tag </InputLabel>
-              <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                value={tag}
-                label="Tag"
-                onChange={tagchange}
-              >
-                <MenuItem value="physics">Physics</MenuItem>
-                <MenuItem value="chemisty">Chemisty</MenuItem>
-                <MenuItem value="c++">c++</MenuItem>
-                <MenuItem value="java">java</MenuItem>
-                <MenuItem value="html">HTML/CSS</MenuItem>
-                <MenuItem value="react">React</MenuItem>
-              </Select>
-            </FormControl>
-            <Form.Group
-              className="mb-3"
-              controlId="exampleForm.ControlInput1"
-            ></Form.Group>
-            {alert === true ? (
-              <>
-                <div class="alert">
-                  <span class="closebtn" onClick={() => setAlert(false)}>
-                    &times;
-                  </span>
-                  <strong>:( </strong>Please fill all the fields
-                </div>
-              </>
-            ) : (
-              <></>
-            )}
-            {goodAlert === true ? (
-              <>
-                <div class="w3-panel w3-green">
-                  <h3>Success!</h3>
-                  <p>Question Asked successfully :) </p>
-                </div>
-              </>
-            ) : (
-              <></>
-            )}
+              {goodAlert === true ? (
+                <>
+                  <div class="w3-panel w3-green">
+                    <h3>Success!</h3>
+                    <p>Question Asked successfully :) </p>
+                  </div>
+                </>
+              ) : (
+                <></>
+              )}
 
-            <div className="Top-Section">
-              <button
-                type="submit"
-                className="submit-btn"
-                onClick={handleChange}
-              >
-                Submit
-              </button>
-            </div>
-          </Form>
+              <div className="Top-Section">
+                <button
+                  type="submit"
+                  className="submit-btn"
+                  onClick={handleChange}
+                >
+                  Submit
+                </button>
+              </div>
+            </Form>
+          </div>
         </>
       )}
     </>

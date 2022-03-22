@@ -122,14 +122,12 @@
   justify-content: center;
 }
 .submit-btn {
-  background-color: #4caf50;
+  background-color: rgb(134, 102, 42);
   color: white;
-  padding: 14px 20px;
-  width: 100px;
-  height: 100px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
+  font-size: 20px;
+  font-family: "Source Code Pro", monospace;
+  padding: 10px;
+  border-radius: 5px;
 }
 .btn {
   background-color: #4caf50;

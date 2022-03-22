@@ -16,8 +16,10 @@ import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import AppBar from "@mui/material/AppBar";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 function SolvedQuestionsList(props) {
+
   const saveinLocal = () => {
     localStorage.setItem("StudentView.Title", props.title);
     localStorage.setItem("StudentView.Description", props.description);
@@ -35,7 +37,6 @@ function SolvedQuestionsList(props) {
           justifyContent="center"
           p={2}
           m={3}
-          sx={{ width: 1 }}
           bgcolor="background.paper"
           boxShadow={3}
         >
@@ -69,9 +70,9 @@ function SolvedQuestionsList(props) {
             {props.description}
           </Typography>
           <Link to="/student/viewanswer">
-            <Button variant="contained" color="primary" onClick={saveinLocal}>
+            <button className="submit-btn" onClick={saveinLocal}>
               View Answers
-            </Button>
+            </button>
           </Link>
         </Box>
       </Grid>
