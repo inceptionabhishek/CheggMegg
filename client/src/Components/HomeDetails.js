@@ -72,21 +72,23 @@ function HomeDetails() {
       ) : (
         <>
           {" "}
-          <Grid
-            container
-            spacing={3}
-            direction="row"
-            justify="center"
-            alignItems="center"
-            padding="2px"
-          >
-            <CardComponent Title="Physics" image={img1} />
-            <CardComponent Title="Chemistry" image={img2} />
-            <CardComponent Title="c++" image={img3} />
-            <CardComponent Title="Java" image={img4} />
-            <CardComponent Title="HTML/CSS" image={img5} />
-            <CardComponent Title="React" image={img6} />
-          </Grid>{" "}
+          <div className="container">
+            <Grid
+              container
+              spacing={3}
+              direction="row"
+              justify="center"
+              alignItems="center"
+              padding="2px"
+            >
+              <CardComponent Title="Physics" image={img1} />
+              <CardComponent Title="Chemistry" image={img2} />
+              <CardComponent Title="c++" image={img3} />
+              <CardComponent Title="Java" image={img4} />
+              <CardComponent Title="HTML/CSS" image={img5} />
+              <CardComponent Title="React" image={img6} />
+            </Grid>{" "}
+          </div>
         </>
       )}
       <div className="Top-Section">
@@ -100,31 +102,35 @@ function HomeDetails() {
         </>
       ) : (
         <>
-          <Grid
-            container
-            spacing={3}
-            direction="row"
-            justify="center"
-            alignItems="center"
-            padding="2px"
-          >
-            <CardComponentForTopTutor Data={toptutor} />
-          </Grid>
+          <div className="container">
+            <Grid
+              container
+              spacing={3}
+              direction="row"
+              justify="center"
+              alignItems="center"
+              padding="2px"
+            >
+              <CardComponentForTopTutor Data={toptutor} />
+            </Grid>
+          </div>
         </>
       )}
-      <h3 className="text-top-section">Recent Blogs by Admins</h3>
-      {DataBlog.map((data, index) => {
-        return (
-          <BlogLists
-            key={index}
-            id={data.id}
-            name={data.name}
-            image={data.image}
-            title={data.title}
-            shortDescription={data.shortDescription}
-          />
-        );
-      })}
+      <div className="blogs container" >
+        <h3 className="text-top-section">Recent Blogs by Admins</h3>
+        {DataBlog.map((data, index) => {
+          return (
+            <BlogLists
+              key={index}
+              id={data.id}
+              name={data.name}
+              image={data.image}
+              title={data.title}
+              shortDescription={data.shortDescription}
+            />
+          );
+        })}
+      </div>
     </>
   );
 }

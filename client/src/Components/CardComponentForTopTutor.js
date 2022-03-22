@@ -22,8 +22,8 @@ import Chip from "@mui/material/Chip";
 import BlogLists from "./BlogLists";
 
 function CardComponentForTopTutor(props) {
-  const toptutor= props.Data;
- 
+  const toptutor = props.Data;
+
   return (
     <>
       <Grid item xs={12} sm={6} md={4} lg={6} xl={2}>
@@ -36,21 +36,42 @@ function CardComponentForTopTutor(props) {
           m={1}
           bgcolor="background.paper"
           boxShadow={3}
+          height="350px"
         >
           <img
-            src={toptutor[0].profileimage}
+            src={toptutor[4].profileimage}
             alt=""
             className="image-thumbnail"
           ></img>
           <Stack spacing={2}>
             <Typography variant="h6">Name : {toptutor[0].name}</Typography>
-            <Typography variant="body2">
-              Questions Solved :20
-            </Typography>
+            <Typography variant="body2">Questions Solved :20</Typography>
+            <Stack spacing={2} direction="row">
+              <i>Top Rated in :</i>{" "}
+              <Chip
+                label="C++"
+                variant="outlined"
+                color="primary"
+                size="small"
+              />
+              <Chip
+                label="Java"
+                variant="outlined"
+                color="primary"
+                size="small"
+              />
+              <Chip
+                label="Html/css"
+                variant="outlined"
+                color="primary"
+                size="small"
+              />
+            </Stack>
           </Stack>
           <Typography variant="h5"></Typography>
         </Box>
       </Grid>
+
       <Grid item xs={12} sm={6} md={4} lg={6} xl={2}>
         <Box
           display="flex"
@@ -61,6 +82,7 @@ function CardComponentForTopTutor(props) {
           m={1}
           bgcolor="background.paper"
           boxShadow={3}
+          height="350px"
         >
           <img
             src={toptutor[1].profileimage}
@@ -69,9 +91,28 @@ function CardComponentForTopTutor(props) {
           ></img>
           <Stack spacing={2}>
             <Typography variant="h6">Name : {toptutor[1].name}</Typography>
-            <Typography variant="body2">
-              Questions Solved :12
-            </Typography>
+            <Typography variant="body2">Questions Solved :12</Typography>
+            <Stack spacing={2} direction="row">
+              <i>Top Rated in :</i>{" "}
+              <Chip
+                label="Physics"
+                variant="outlined"
+                color="primary"
+                size="small"
+              />
+              <Chip
+                label="Chemistry"
+                variant="outlined"
+                color="primary"
+                size="small"
+              />
+              <Chip
+                label="Maths"
+                variant="outlined"
+                color="primary"
+                size="small"
+              />
+            </Stack>
           </Stack>
           <Typography variant="h5"></Typography>
         </Box>

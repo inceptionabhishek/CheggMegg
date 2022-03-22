@@ -31,7 +31,7 @@ function CardComponent(props) {
           justifyContent="center"
           p={2}
           m={1}
-          height="500px"
+          height="350px"
           bgcolor="background.paper"
           boxShadow={3}
         >
