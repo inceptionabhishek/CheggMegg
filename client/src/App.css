@@ -120,7 +120,9 @@
 .divquestionlist {
   display: flex;
   justify-content: center;
+  
 }
+
 .submit-btn {
   background-color: rgb(134, 102, 42);
   color: white;

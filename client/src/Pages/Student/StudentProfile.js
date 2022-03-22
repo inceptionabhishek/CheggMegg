@@ -3,6 +3,7 @@ import axios from "axios";
 import { Card, Spinner } from "react-bootstrap";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
+import { height } from "@mui/system";
 
 function StudentProfile() {
   const uri = "https://meggchegg.herokuapp.com/api/students/getprofile";
@@ -10,8 +11,8 @@ function StudentProfile() {
     "https://meggchegg.herokuapp.com/admin/getQuestionsCountByStudent";
   const [profile, setProfile] = useState([]);
   const email = localStorage.getItem("email");
+  console.log(email);
   const [totalquestionCount, setQuestionCount] = useState(0);
-  const [fakedata, setFakedata] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     setTimeout(() => {
@@ -24,6 +25,7 @@ function StudentProfile() {
         email: email,
       })
       .then((res) => {
+        console.log(res.data);
         setQuestionCount(res.data.questions);
       });
     axios
@@ -59,10 +61,6 @@ function StudentProfile() {
               <Card.Body>
                 <Card.Title>Name : {profile.name}</Card.Title>
                 <Card.Text>Email : {profile.email}</Card.Text>
-                <Card.Text>
-                  Total Question Asked : {totalquestionCount}
-                </Card.Text>
-                <Card.Text>Total Doubts Resolved : 0</Card.Text>
                 <Link to="/students/updateprofile">
                   <Button
                     variant="outlined"
