@@ -22,7 +22,7 @@
   display: flex;
   justify-content: center;
   padding: 5px;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 .text-top-section {
   font-size: 30px;
@@ -188,7 +188,6 @@
   align-items: center;
 }
 .ill-heading {
-  font-family: cursive;
   font-size: 15px;
   color: gray;
 }
