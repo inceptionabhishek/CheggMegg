@@ -5,6 +5,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import LoginIcon from "@mui/icons-material/Login";
 import VpnKeyIcon from "@mui/icons-material/VpnKey";
 import LockIcon from "@mui/icons-material/Lock";
+import TravelExploreIcon from "@mui/icons-material/TravelExplore";
 import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
 function NavbarComponent() {
   return (
@@ -20,7 +21,12 @@ function NavbarComponent() {
               className="me-auto my-2 my-lg-0"
               style={{ maxHeight: "100px" }}
               navbarScroll
-            ></Nav>
+            >
+              <Link to="/explore" className="links">
+                Explore
+                <TravelExploreIcon />
+              </Link>
+            </Nav>
             <Nav className="ml-auto" navbarScroll>
               <Link to="/loginauth" className="links">
                 Login

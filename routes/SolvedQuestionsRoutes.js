@@ -66,4 +66,16 @@ router.post("/view/student", async (req, res) => {
     data: solvedQuestion,
   });
 });
+// Get all solved questions
+router.get("/view/all", async (req, res) => {
+  const solvedQuestion = await SolvedQuestions.find();
+  res.status(200).json({
+    message: "Solved questions fetched successfully",
+    data: solvedQuestion,
+  });
+});
+
+
+
+
 module.exports = router;

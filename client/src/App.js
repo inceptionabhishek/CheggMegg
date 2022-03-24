@@ -38,7 +38,7 @@ import Loginauth from "./Pages/Auth/Loginauth";
 import Signupauth from "./Pages/Auth/Signupauth";
 import ViewTutorProfile from "./Pages/Admin/ViewTutorProfile";
 import Viewstudentprofile from "./Pages/Admin/Viewstudentprofile";
-
+import Explore from "./Pages/Explore";
 function App() {
   const [loggedIn, setLoggedIn] = useState(
     localStorage.getItem("login") === "true" ? true : false || false
@@ -65,6 +65,7 @@ function App() {
         (loggedInAdmin && <NavbarForAdmin />)}
       <Routes>
         <Route path="/" element={<Home />} />
+
         {notLoggedIn ? (
           <>
             <Route path="/blog" element={<Blog1 />} />
@@ -75,6 +76,7 @@ function App() {
             <Route path="/signin/admin" element={<SigninAdmin />} />
             <Route path="/signin/tutor" element={<SigninTutor />} />
             <Route path="/signup/tutor" element={<SignupTutor />} />
+            <Route path="/explore" element={<Explore />} />
           </>
         ) : (
           <>
