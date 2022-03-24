@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { Grid, Typography, Box } from "@mui/material";
 import CardComponentForExplore from "../Components/CardComponentForExplore";
 function Explore() {
-  const api = "http://localhost:5000/api/solved/view/all";
+  const api = "https://meggchegg.herokuapp.com/api/solved/view/all";
   const [allQuestions, setAllQuestions] = useState([]);
   useEffect(() => {
     axios
