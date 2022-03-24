@@ -39,6 +39,8 @@ import Signupauth from "./Pages/Auth/Signupauth";
 import ViewTutorProfile from "./Pages/Admin/ViewTutorProfile";
 import Viewstudentprofile from "./Pages/Admin/Viewstudentprofile";
 import Explore from "./Pages/Explore";
+import Mycourse from "./Pages/Tutor/Mycourse";
+import CreateCourse from "./Pages/Tutor/CreateCourse";
 function App() {
   const [loggedIn, setLoggedIn] = useState(
     localStorage.getItem("login") === "true" ? true : false || false
@@ -117,6 +119,11 @@ function App() {
                     <Route
                       path="/tutor/solvedquestions"
                       element={<TutorSolvedQuestions />}
+                    />
+                    <Route path="/tutor/mycourse" element={<Mycourse />} />
+                    <Route
+                      path="/tutor/createcourse"
+                      element={<CreateCourse />}
                     />
                     <Route path="/tutor/viewanswer" element={<ViewAnswer />} />
                     <Route path="/tutor/answerquestion" element={<Tutor />} />

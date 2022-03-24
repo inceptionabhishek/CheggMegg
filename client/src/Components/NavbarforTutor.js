@@ -1,17 +1,17 @@
 import React from "react";
-import { Nav, Container, Navbar,Button } from "react-bootstrap";
+import { Nav, Container, Navbar, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import HomeIcon from "@mui/icons-material/Home";
 import LoginIcon from "@mui/icons-material/Login";
 import VpnKeyIcon from "@mui/icons-material/VpnKey";
 
 function NavbarforTutor() {
-    const handlelogout = () => {
-      localStorage.setItem("login", false);
-      localStorage.setItem("email", "");
-      localStorage.setItem("user", "");
-      window.location.href = "/";
-    };
+  const handlelogout = () => {
+    localStorage.setItem("login", false);
+    localStorage.setItem("email", "");
+    localStorage.setItem("user", "");
+    window.location.href = "/";
+  };
   return (
     <>
       <Navbar className="navbar" expand="lg">
@@ -29,6 +29,12 @@ function NavbarforTutor() {
                 </Link>
                 <Link to="/tutor/solvedquestions" className="links">
                   SolvedQuestions
+                </Link>
+                <Link to="/tutor/mycourse" className="links">
+                  My courses
+                </Link>
+                <Link to="/tutor/createcourse" className="links">
+                  Create Course
                 </Link>
                 <Link to="/tutorprofile" className="links">
                   Profile

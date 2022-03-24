@@ -14,7 +14,6 @@ function Explore() {
       .then((res) => {
         setAllQuestions(res.data.data);
         setLoading(false);
-        console.log(res);
       })
       .catch((err) => {
         console.log(err);
