@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Card, Button, Spinner } from "react-bootstrap";
 import axios from "axios";
-
+const uri = process.env.SERVER_URI;
 function TutorProfile() {
-  const uri = "https://meggchegg.herokuapp.com/api/tutor/getprofile";
+  const url = `${uri}/api/tutor/getprofile`;
   const [profile, setProfile] = useState([]);
   const [loading, setLoading] = useState(true);
   const [solvedCount, setSolvedCount] = useState(0);
 
-  const urlQuestionCount =
-    "http://localhost:5000/admin/getQuestionsSolvedCountByTutor";
+  const urlQuestionCount = `${uri}/admin/getQuestionsSolvedCountByTutor`;
   const email = localStorage.getItem("email");
   useEffect(() => {
     axios
@@ -25,7 +24,7 @@ function TutorProfile() {
   }, [solvedCount]);
   useEffect(() => {
     axios
-      .post(uri, {
+      .post(url, {
         email: email,
       })
       .then((res) => {

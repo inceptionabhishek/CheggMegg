@@ -18,7 +18,7 @@ function SigninAdmin() {
   const handleFormSubmit = (event) => {
     event.preventDefault();
     axios
-      .post("https://meggchegg.herokuapp.com/admin/validate", {
+      .post(`${process.env.SERVER_URI}/admin/validate`, {
         email: email,
         password: password,
       })

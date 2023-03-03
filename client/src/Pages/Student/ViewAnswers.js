@@ -5,7 +5,7 @@ import { Avatar, Chip } from "@mui/material";
 function ViewAnswers(props) {
   const [loading, setLoading] = useState(true);
   const [tutor, setTutor] = useState([]);
-  const uri = "https://meggchegg.herokuapp.com/api/tutor/getprofile";
+  const uri = `${process.env.SERVER_URI}/api/tutor/getprofile`;
   useEffect(() => {
     axios
       .post(uri, {
@@ -71,7 +71,6 @@ function ViewAnswers(props) {
                       Answered By :{tutor.name}
                     </h3>
                     <Avatar src={tutor.profileimage} />
-                    
                   </div>
                 </div>
               </div>

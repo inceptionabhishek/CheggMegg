@@ -4,8 +4,9 @@ import { useState, useEffect } from "react";
 import { Grid, Typography, Box } from "@mui/material";
 import { Spinner } from "react-bootstrap";
 import CardComponentForExplore from "../Components/CardComponentForExplore";
+const uri = process.env.SERVER_URI;
 function Explore() {
-  const api = "https://meggchegg.herokuapp.com/api/solved/view/all";
+  const api = `${uri}/api/solved/view/all`;
   const [allQuestions, setAllQuestions] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {

@@ -20,23 +20,17 @@ function LoggedAdmin() {
     }, 1000);
   }, []);
   useEffect(() => {
+    axios.get(`${process.env.SERVER_URI}/admin/totalStudents`).then((res) => {
+      setStudentsize(res.data.count);
+    });
+    axios.get(`${process.env.SERVER_URI}/admin/totalTutors`).then((res) => {
+      setTutorsize(res.data.count);
+    });
+    axios.get(`${process.env.SERVER_URI}/admin/totalquestions`).then((res) => {
+      setTotalQuestionasked(res.data.count);
+    });
     axios
-      .get("https://meggchegg.herokuapp.com/admin/totalStudents")
-      .then((res) => {
-        setStudentsize(res.data.count);
-      });
-    axios
-      .get("https://meggchegg.herokuapp.com/admin/totalTutors")
-      .then((res) => {
-        setTutorsize(res.data.count);
-      });
-    axios
-      .get("https://meggchegg.herokuapp.com/admin/totalquestions")
-      .then((res) => {
-        setTotalQuestionasked(res.data.count);
-      });
-    axios
-      .get("https://meggchegg.herokuapp.com/admin/solvedquestioncount")
+      .get(`${process.env.SERVER_URI}/admin/solvedquestioncount`)
       .then((res) => {
         setTotalQuestionsAnswers(res.data.count);
         setLoading(false);

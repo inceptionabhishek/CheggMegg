@@ -39,12 +39,12 @@ function CardComponentForTopTutor(props) {
           height="350px"
         >
           <img
-            src={toptutor[4].profileimage}
+            src={toptutor[4]?.profileimage}
             alt=""
             className="image-thumbnail"
           ></img>
           <Stack spacing={2}>
-            <Typography variant="h6">Name : {toptutor[0].name}</Typography>
+            <Typography variant="h6">Name : {toptutor[0]?.name}</Typography>
             <Typography variant="body2">Questions Solved :20</Typography>
             <Stack spacing={2} direction="row">
               <i>Top Rated in :</i>{" "}
@@ -85,12 +85,12 @@ function CardComponentForTopTutor(props) {
           height="350px"
         >
           <img
-            src={toptutor[1].profileimage}
+            src={toptutor[1]?.profileimage}
             alt=""
             className="image-thumbnail"
           ></img>
           <Stack spacing={2}>
-            <Typography variant="h6">Name : {toptutor[1].name}</Typography>
+            <Typography variant="h6">Name : {toptutor[1]?.name}</Typography>
             <Typography variant="body2">Questions Solved :12</Typography>
             <Stack spacing={2} direction="row">
               <i>Top Rated in :</i>{" "}

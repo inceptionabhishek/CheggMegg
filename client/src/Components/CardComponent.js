@@ -1,25 +1,6 @@
-import axios from "axios";
 import * as React from "react";
 import Box from "@mui/material/Box";
-import Slider from "@mui/material/Slider";
-import { Grid, Typography } from "@mui/material";
-import Button from "@mui/material/Button";
-import { useState, useEffect } from "react";
-import Avatar from "@mui/material/Avatar";
-import Stack from "@mui/material/Stack";
-import { Route, Routes } from "react-router-dom";
-import Tooltip from "@mui/material/Tooltip";
-import MenuItem from "@mui/material/MenuItem";
-import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
-import Container from "@mui/material/Container";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import AppBar from "@mui/material/AppBar";
-import { Link } from "@mui/material";
-import thumbpic from "../Images/thumbpic.jpg";
-import img1 from "../Images/img1.jpg";
-import Chip from "@mui/material/Chip";
+import { Grid } from "@mui/material";
 function CardComponent(props) {
   return (
     <>
@@ -39,13 +20,24 @@ function CardComponent(props) {
             src={props.image}
             className="image-thumbnail"
             alt="Thumbnail"
+            height="150px"
+            width="150px"
+            style={{
+              borderRadius: "50%",
+              marginTop: "10px",
+              marginBottom: "10px",
+            }}
           ></img>
-          <Typography variant="h5">
-            <Chip label={props.Title} color="primary" />
-          </Typography>
-          <Typography variant="h6">
-            We have best Teachers for the {props.Title} subject.
-          </Typography>
+          <h2
+            style={{
+              color: "black",
+              fontSize: "20px",
+              fontWeight: "bold",
+              marginTop: "10px",
+            }}
+          >
+            {props.Title}
+          </h2>
         </Box>
       </Grid>
     </>

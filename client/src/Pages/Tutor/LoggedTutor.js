@@ -5,7 +5,7 @@ import { Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
 function LoggedTutor() {
-  const api = "https://meggchegg.herokuapp.com/api/tutor/getallquestions";
+  const api = `${process.env.SERVER_URI}/api/tutor/getallquestions`;
   const [questions, setQuestions] = useState([]);
   const tutoremail = localStorage.getItem("email");
   const [questionId, setQuestionId] = useState("");
@@ -23,7 +23,6 @@ function LoggedTutor() {
       })
       .then((res) => {
         setQuestions(res.data);
-        
       })
       .catch((err) => {
         console.log(err);
@@ -36,7 +35,11 @@ function LoggedTutor() {
       {loading ? (
         <>
           <div className="spinner">
-            <Spinner animation="border" variant="primary" className="TempSpinner" />
+            <Spinner
+              animation="border"
+              variant="primary"
+              className="TempSpinner"
+            />
           </div>
         </>
       ) : (

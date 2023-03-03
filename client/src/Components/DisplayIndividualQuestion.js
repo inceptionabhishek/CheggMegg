@@ -12,7 +12,7 @@ function DisplayIndividualQuestion() {
       setLoading(false);
     });
   }, []);
-  const uri = "https://meggchegg.herokuapp.com/api/question/getquestion";
+  const uri = `${process.env.SERVER_URI}/api/question/getquestion`;
   useEffect(() => {
     axios
       .post(uri, {
@@ -27,7 +27,6 @@ function DisplayIndividualQuestion() {
   }, []);
   return (
     <>
-  
       {loading ? (
         <div className="spinner">
           <Spinner

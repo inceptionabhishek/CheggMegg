@@ -10,7 +10,7 @@ import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
 function NavbarComponent() {
   return (
     <>
-      <Navbar className="navbar" expand="lg">
+      <Navbar className="navbar" expand="lg" sticky="top">
         <Container fluid>
           <Link to="/" className="links">
             <h1>MeggChegg</h1>
@@ -19,7 +19,7 @@ function NavbarComponent() {
           <Navbar.Collapse id="navbarScroll">
             <Nav
               className="me-auto my-2 my-lg-0"
-              style={{ maxHeight: "100px" }}
+              // style={{ maxHeight: "100px" }}
               navbarScroll
             >
               <Link to="/explore" className="links">

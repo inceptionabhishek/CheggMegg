@@ -34,7 +34,7 @@ function Signup() {
         .then((res) => res.json())
         .then((data) => {
           setImage(data.url);
-          
+
           setUploaded(false);
         });
     }
@@ -52,7 +52,7 @@ function Signup() {
       setAllvalues(true);
     } else {
       await axios
-        .post("https://meggchegg.herokuapp.com/api/students/add/newstudent", {
+        .post(`${process.env.SERVER_URI}/api/students/add/newstudent`, {
           username: username,
           name: name,
           email: email,

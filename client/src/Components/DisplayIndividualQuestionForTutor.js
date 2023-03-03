@@ -12,7 +12,7 @@ function DisplayIndividualQuestionForTutor() {
   const [goodAlert, setGoodAlert] = useState(false);
   const question_id = localStorage.getItem("question_id");
   const [loading, setLoading] = useState(true);
-  const uri = "https://meggchegg.herokuapp.com/api/question/getquestion";
+  const uri = `${process.env.SERVER_URI}/api/question/getquestion`;
   useEffect(() => {
     axios
       .post(uri, {
@@ -26,7 +26,7 @@ function DisplayIndividualQuestionForTutor() {
         console.log(err);
       });
   }, [question]);
-  const api = "https://meggchegg.herokuapp.com/api/solved/add/tutor";
+  const api = `${process.env.SERVER_URI}/api/solved/add/tutor`;
   const answerQuestionHandler = async (e) => {
     e.preventDefault();
     if (question.status === true) {

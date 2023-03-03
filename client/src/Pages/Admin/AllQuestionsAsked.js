@@ -7,7 +7,7 @@ import { Chip } from "@mui/material";
 function AllQuestionsAsked() {
   const [allquestions, setAllquestions] = useState([]);
   const [loading, setLoading] = useState(true);
-  const api = "https://meggchegg.herokuapp.com/admin/getAllQuestions";
+  const api = `${process.env.SERVER_URI}/admin/getAllQuestions`;
   useEffect(() => {
     fetch(api)
       .then((res) => res.json())

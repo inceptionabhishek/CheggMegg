@@ -5,7 +5,7 @@ import { Spinner } from "react-bootstrap";
 import SolvedQuestionsList from "../../Components/Student/SolvedQuestionsList";
 function SolvedQuestions() {
   const [solved, setSolved] = useState([]);
-  const api = "https://meggchegg.herokuapp.com/api/solved/view/student";
+  const api = `${process.env.SERVER_URI}/api/solved/view/student`;
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     axios

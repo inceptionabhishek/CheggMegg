@@ -1,22 +1,34 @@
 import React from "react";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
-
+import { Box, Container, Grid, Typography } from "@mui/material";
 function Footer() {
   return (
     <>
-      <div className="Footer">
-        <h3>Made by Abhishek kumar </h3>
-      </div>
-      <div className="Footer">
-        <a href="https://github.com/inceptionabhishek">
-          <GitHubIcon />
-        </a>
-        
-        <a href="https://www.linkedin.com/in/inceptionabhi/">
-          <LinkedInIcon />
-        </a>
-      </div>
+      <Box
+        sx={{
+          width: "100%",
+          height: "auto",
+          backgroundColor: "#000000",
+          paddingTop: "1rem",
+          paddingBottom: "1rem",
+        }}
+      >
+        <Container maxWidth="lg">
+          <Grid container direction="column" alignItems="center">
+            <Grid item xs={12}>
+              <Typography color="white" variant="h5">
+                By Abhishek kumar{" "}
+              </Typography>
+            </Grid>
+            <Grid item xs={12}>
+              <Typography color="white" variant="subtitle1">
+                {`${new Date().getFullYear()} | React | Material UI | React Router`}
+              </Typography>
+            </Grid>
+          </Grid>
+        </Container>
+      </Box>
     </>
   );
 }

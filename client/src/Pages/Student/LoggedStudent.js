@@ -50,7 +50,7 @@ function LoggedStudent() {
     e.preventDefault();
     if (questionTitle.length > 0 && questionDescription.length > 0) {
       setLoading(true);
-      const api = "https://meggchegg.herokuapp.com/api/question/askquestion";
+      const api = `${process.env.SERVER_URI}/api/question/askquestion`;
       const data = {
         studentwhoaskedemail: localStorage.getItem("email"),
         questiontitle: questionTitle,

@@ -7,7 +7,7 @@ import axios from "axios";
 function AdminStudentlist() {
   const [students, setStudents] = useState([]);
   const [loading, setLoading] = useState(true);
-  const api = "https://meggchegg.herokuapp.com/admin/getAllStudents";
+  const api = `${process.env.SERVER_URI}/admin/getAllStudents`;
   useEffect(() => {
     axios.get(api).then((res) => {
       setStudents(res.data.students);

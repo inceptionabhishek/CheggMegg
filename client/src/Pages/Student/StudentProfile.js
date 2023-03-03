@@ -6,9 +6,9 @@ import { Link } from "react-router-dom";
 import { height } from "@mui/system";
 
 function StudentProfile() {
-  const uri = "https://meggchegg.herokuapp.com/api/students/getprofile";
+  const uri = `${process.env.SERVER_URI}/api/students/getprofile`;
   const totquestionuri =
-    "https://meggchegg.herokuapp.com/admin/getQuestionsCountByStudent";
+    `${process.env.SERVER_URI}/admin/getQuestionsCountByStudent`;
   const [profile, setProfile] = useState([]);
   const email = localStorage.getItem("email");
   console.log(email);

@@ -25,8 +25,6 @@ import SignupTutor from "./Pages/Tutor/SignupTutor";
 import SigninAdmin from "./Pages/Admin/SigninAdmin";
 import DisplayIndividualQuestion from "./Components/DisplayIndividualQuestion";
 import DisplayIndividualQuestionForTutor from "./Components/DisplayIndividualQuestionForTutor";
-import Notlogin from "./ProtectedRoutes/Notlogin";
-import Studentroute from "./ProtectedRoutes/Studentroute";
 import UpdateQuestion from "./Pages/Student/UpdateQuestion";
 import UpdateProfile from "./Pages/Student/UpdateProfile";
 import ViewAnswer from "./Pages/Tutor/ViewAnswer";
@@ -36,8 +34,6 @@ import Blog1 from "./Pages/Blogs/Blog1";
 import Error from "./Pages/Error";
 import Loginauth from "./Pages/Auth/Loginauth";
 import Signupauth from "./Pages/Auth/Signupauth";
-import ViewTutorProfile from "./Pages/Admin/ViewTutorProfile";
-import Viewstudentprofile from "./Pages/Admin/Viewstudentprofile";
 import Explore from "./Pages/Explore";
 import Mycourse from "./Pages/Tutor/Mycourse";
 import CreateCourse from "./Pages/Tutor/CreateCourse";
@@ -46,10 +42,6 @@ function App() {
     localStorage.getItem("login") === "true" ? true : false || false
   );
   const [notLoggedIn, setNotloggedIn] = useState(!loggedIn);
-  const [curruseremail, setCurruseremail] = useState(
-    localStorage.getItem("email") || ""
-  );
-  const [user, setUser] = useState(localStorage.getItem("user") || "");
   const [loggedInTutor, setLoggedInTutor] = useState(
     localStorage.getItem("user") === "tutor" || false
   );

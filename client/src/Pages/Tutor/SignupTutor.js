@@ -13,11 +13,11 @@ function SignupTutor() {
   const [allvalues, setAllvalues] = useState(false);
   const [fakedata, setFakedata] = useState([]);
   const [loading, setLoading] = useState(true);
- useEffect(() => {
-   setTimeout(() => {
-     setLoading(false);
-   }, 1000);
- }, []);
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  }, []);
   const HandlerFunction = async () => {
     if (image === "") {
       setAllvalues(true);
@@ -34,7 +34,7 @@ function SignupTutor() {
         .then((res) => res.json())
         .then((data) => {
           setImage(data.url);
-          
+
           setUploaded(false);
         });
     }
@@ -53,7 +53,7 @@ function SignupTutor() {
       setAllvalues(true);
     } else {
       await axios
-        .post("https://meggchegg.herokuapp.com/api/tutor/add/newtutor", {
+        .post(`${process.env.SERVER_URI}/api/tutor/add/newtutor`, {
           username: username,
           name: name,
           email: email,

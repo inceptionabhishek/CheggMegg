@@ -14,8 +14,7 @@ function UnsolvedQuestions() {
       setLoading(false);
     }, 1000);
   }, []);
-  const uri =
-    "https://meggchegg.herokuapp.com/api/question/getunsolvedquestion";
+  const uri = `${process.env.SERVER_URI}/api/question/getunsolvedquestion`;
 
   useEffect(() => {
     axios

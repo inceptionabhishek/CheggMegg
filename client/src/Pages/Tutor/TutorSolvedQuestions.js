@@ -4,6 +4,7 @@ import { Grid, Typography } from "@mui/material";
 import axios from "axios";
 import { Spinner } from "react-bootstrap";
 import SolvedQuestionsListForTutor from "./SolvedQuestionsListForTutor";
+const uri = process.env.SERVER_URI;
 function TutorSolvedQuestions() {
   const tempimage =
     "https://res.cloudinary.com/dkeiewkz6/image/upload/v1646113532/rkvgtstl4xdqcey0x8lr.png";
@@ -12,22 +13,21 @@ function TutorSolvedQuestions() {
 
   useEffect(() => {
     axios
-      .post("https://meggchegg.herokuapp.com/api/solved/view/tutor", {
+      .post(`${uri}/api/solved/view/tutor`, {
         tutoremail: localStorage.getItem("email"),
       })
       .then((res) => {
         setSolvedQuestions(res.data.data);
-       
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
-    useEffect(() => {
-      setTimeout(() => {
-        setLoading(false);
-      }, 1000);
-    }, []);
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  }, []);
 
   return (
     <>

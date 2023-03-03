@@ -9,15 +9,15 @@ function SigninTutor() {
   const [alert, setAlert] = useState(false);
   const [fakedata, setFakedata] = useState([]);
   const [loading, setLoading] = useState(true);
- useEffect(() => {
-   setTimeout(() => {
-     setLoading(false);
-   }, 1000);
- }, []);
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  }, []);
   const handleFormSubmit = (event) => {
     event.preventDefault();
     axios
-      .post("https://meggchegg.herokuapp.com/api/tutor/validate", {
+      .post(`${process.env.SERVER_URI}/api/tutor/validate`, {
         email: email,
         password: password,
       })

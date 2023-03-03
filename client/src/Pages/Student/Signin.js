@@ -19,7 +19,7 @@ function Signin() {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     await axios
-      .post("https://meggchegg.herokuapp.com/api/students/validate", {
+      .post(`${process.env.SERVER_URI}/api/students/validate`, {
         email: email,
         password: password,
       })

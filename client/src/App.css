@@ -58,8 +58,8 @@
   object-fit: cover;
 }
 .navbar {
-  background-color: rgb(134, 102, 42);
-  padding: 6px;
+  background-color: #DC8449;
+  padding: 3px;
 }
 
 .links2 {
@@ -120,7 +120,6 @@
 .divquestionlist {
   display: flex;
   justify-content: center;
-  
 }
 
 .submit-btn {
