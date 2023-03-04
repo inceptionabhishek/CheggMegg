@@ -13,6 +13,7 @@ function Footer() {
           paddingTop: "1rem",
           paddingBottom: "1rem",
         }}
+        sticky="bottom"
       >
         <Container maxWidth="lg">
           <Grid container direction="column" alignItems="center">

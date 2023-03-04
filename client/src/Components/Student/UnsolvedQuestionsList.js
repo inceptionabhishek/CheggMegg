@@ -1,28 +1,15 @@
 import React from "react";
 import Box from "@mui/material/Box";
-import Slider from "@mui/material/Slider";
 import { Grid, Typography } from "@mui/material";
 import Button from "@mui/material/Button";
-import { useState, useEffect } from "react";
-import Avatar from "@mui/material/Avatar";
-import Stack from "@mui/material/Stack";
-import { Route, Routes } from "react-router-dom";
-import Tooltip from "@mui/material/Tooltip";
-import MenuItem from "@mui/material/MenuItem";
-import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
-import Container from "@mui/material/Container";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import AppBar from "@mui/material/AppBar";
 import axios from "axios";
 import { Link } from "react-router-dom";
-
+import { SERVER_URI } from "../../apiService";
 function UnsolvedQuestionsList(props) {
   const handler = () => {
     localStorage.setItem("question_id", props.question_id);
   };
-  const apidelete = `${process.env.SERVER_URI}/api/students/deletequestion`;
+  const apidelete = `${SERVER_URI}/api/students/deletequestion`;
   const HandlerDelete = () => {
     axios
       .post(apidelete, {

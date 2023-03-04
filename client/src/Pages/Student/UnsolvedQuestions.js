@@ -1,20 +1,20 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { Grid, Typography } from "@mui/material";
-import { Spinner } from "react-bootstrap";
+import { Typography } from "@mui/material";
+import { Container, Spinner } from "react-bootstrap";
 import axios from "axios";
 import UnsolvedQuestionsList from "../../Components/Student/UnsolvedQuestionsList";
+import { SERVER_URI } from "../../apiService";
 function UnsolvedQuestions() {
   const email = localStorage.getItem("email");
   const [questions, setQuestions] = useState([]);
-  const [fakedata, setFakedata] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
     }, 1000);
   }, []);
-  const uri = `${process.env.SERVER_URI}/api/question/getunsolvedquestion`;
+  const uri = `${SERVER_URI}/api/question/getunsolvedquestion`;
 
   useEffect(() => {
     axios
@@ -23,7 +23,6 @@ function UnsolvedQuestions() {
       })
       .then((res) => {
         setQuestions(res.data);
-        // console.log(res.data);
       })
       .catch((err) => {
         console.log(err);
@@ -41,12 +40,12 @@ function UnsolvedQuestions() {
           />
         </div>
       ) : (
-        <>
+        <Container>
           <h1 className="askQuestion">Unsolved Questions</h1>
           <br />
           <br />
 
-          {questions.length === 0 ? (
+          {questions?.length === 0 ? (
             <div className="divquestionlist">
               <Typography variant="h5" component="h2">
                 No Unsolved Questions
@@ -65,7 +64,7 @@ function UnsolvedQuestions() {
               );
             })
           )}
-        </>
+        </Container>
       )}
     </>
   );

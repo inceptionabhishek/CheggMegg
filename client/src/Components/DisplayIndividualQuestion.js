@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Spinner } from "react-bootstrap";
+import { SERVER_URI } from "../apiService";
 function DisplayIndividualQuestion() {
   const [question, setQuestion] = useState({});
   const question_id = localStorage.getItem("question_id");
-  const [fakedata, setFakedata] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    axios.get("https://randomuser.me/api/").then((res) => {
-      setFakedata(res.data.results);
+    setTimeout(() => {
       setLoading(false);
-    });
+    }, 1000);
   }, []);
-  const uri = `${process.env.SERVER_URI}/api/question/getquestion`;
+  const uri = `${SERVER_URI}/api/question/getquestion`;
   useEffect(() => {
     axios
       .post(uri, {
@@ -37,7 +36,7 @@ function DisplayIndividualQuestion() {
         </div>
       ) : (
         <>
-          <div className="container">
+          <div className="container" style={{ marginTop: "100px" }}>
             <div className="row">
               <div className="col-md-12">
                 <div className="card">
@@ -46,10 +45,12 @@ function DisplayIndividualQuestion() {
                   </div>
                   <div className="card-body">
                     <p>{question.questiondescription}</p>
+                    <br />
+
                     <img
                       src={question.questionimage}
                       alt="question"
-                      width="400px"
+                      width={200}
                     />
                   </div>
                 </div>
