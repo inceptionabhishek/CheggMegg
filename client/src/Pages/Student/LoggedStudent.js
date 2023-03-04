@@ -1,14 +1,8 @@
 import React, { useState, useEffect } from "react";
-import TextareaAutosize from "@mui/material/TextareaAutosize";
 import { Button, Form, Spinner } from "react-bootstrap";
-import Box from "@mui/material/Box";
-import Slider from "@mui/material/Slider";
 import axios from "axios";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-
+import { SERVER_URI } from "../../apiService";
+import Footer from "../../Components/Footer";
 function LoggedStudent() {
   const [image, setImage] = useState("");
   const [questionTitle, setQuestionTitle] = useState("");
@@ -18,7 +12,6 @@ function LoggedStudent() {
   const [goodAlert, setGoodAlert] = useState(false);
   const [loading, setLoading] = useState(true);
   const [tag, setTag] = useState("");
-  const [cost, setCost] = useState(100);
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
@@ -43,25 +36,24 @@ function LoggedStudent() {
       });
     setUploaded(false);
   };
-  const tagchange = (event) => {
-    setTag(event.target.value);
-  };
   const handleChange = async (e) => {
     e.preventDefault();
     if (questionTitle.length > 0 && questionDescription.length > 0) {
       setLoading(true);
-      const api = `${process.env.SERVER_URI}/api/question/askquestion`;
+      const api = `${SERVER_URI}/api/question/askquestion`;
       const data = {
         studentwhoaskedemail: localStorage.getItem("email"),
         questiontitle: questionTitle,
         questiondescription: questionDescription,
         questionimage: image,
-        tag: tag,
       };
       await axios
         .post(api, data)
         .then((res) => {
           setLoading(false);
+          setQuestionTitle("");
+          setQuestionDescription("");
+          setImage("");
           setGoodAlert(true);
         })
         .catch((err) => {
@@ -186,6 +178,7 @@ function LoggedStudent() {
           </div>
         </>
       )}
+      <Footer />
     </>
   );
 }
