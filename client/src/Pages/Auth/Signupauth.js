@@ -6,8 +6,9 @@ import HomeIcon from "@mui/icons-material/Home";
 import LoginIcon from "@mui/icons-material/Login";
 import VpnKeyIcon from "@mui/icons-material/VpnKey";
 import LockIcon from "@mui/icons-material/Lock";
-import { Grid, Typography,Box } from "@mui/material";
+import { Grid, Typography, Box } from "@mui/material";
 import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
+import Footer from "../../Components/Footer";
 function Signupauth() {
   return (
     <>
@@ -81,9 +82,9 @@ function Signupauth() {
               </Link>
             </Box>
           </Grid>
-         
         </Grid>
       </div>
+      <Footer />
     </>
   );
 }

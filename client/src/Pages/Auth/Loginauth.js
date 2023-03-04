@@ -1,13 +1,9 @@
 import React from "react";
-import Chip from "@mui/material/Chip";
-import Avatar from "@mui/material/Avatar";
-import Stack from "@mui/material/Stack";
-import { Button, Spinner } from "react-bootstrap";
-import { Route, Routes, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Box } from "@mui/material";
-import Slider from "@mui/material/Slider";
-import Footer from "../../Components/Footer";
 import { Grid, Typography } from "@mui/material";
+import Footer from "../../Components/Footer";
+
 function Loginauth() {
   return (
     <>
@@ -116,7 +112,7 @@ function Loginauth() {
           </Grid>
         </Grid>
       </div>
-     
+      <Footer />
     </>
   );
 }
