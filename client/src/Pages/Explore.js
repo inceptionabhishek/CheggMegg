@@ -4,9 +4,10 @@ import { useState, useEffect } from "react";
 import { Grid, Typography, Box } from "@mui/material";
 import { Spinner } from "react-bootstrap";
 import CardComponentForExplore from "../Components/CardComponentForExplore";
-const uri = process.env.SERVER_URI;
+import { SERVER_URI } from "../apiService";
+import Footer from "../Components/Footer";
 function Explore() {
-  const api = `${uri}/api/solved/view/all`;
+  const api = `${SERVER_URI}/api/solved/view/all`;
   const [allQuestions, setAllQuestions] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
@@ -15,44 +16,71 @@ function Explore() {
       .then((res) => {
         setAllQuestions(res.data.data);
         setLoading(false);
+        console.log(res.data.data);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, [allQuestions]);
+  }, []);
 
   return (
     <>
       <h2 className="Top-Section2">Explore All Questions</h2>
-      {loading ? (
-        <>
-          {" "}
-          <div className="spinner">
-            <Spinner
-              animation="border"
-              variant="primary"
-              className="TempSpinner"
-            />
-          </div>
-        </>
-      ) : (
-        <>
-          <div className="container">
-            <Grid
-              container
-              spacing={3}
-              direction="row"
-              justify="center"
-              alignItems="center"
-              padding="2px"
-            >
-              {allQuestions.map((question) => {
-                return <CardComponentForExplore data={question} />;
-              })}
-            </Grid>
-          </div>
-        </>
-      )}
+      <div
+        style={{
+          marginBottom: "500px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        {loading ? (
+          <>
+            {" "}
+            <div className="spinner">
+              <Spinner
+                animation="border"
+                variant="primary"
+                className="TempSpinner"
+              />
+            </div>
+          </>
+        ) : (
+          <>
+            {allQuestions.length === 0 ? (
+              <div>
+                <Grid container spacing={3} padding="2px" marginTop="200px">
+                  <Typography
+                    variant="h4"
+                    color="text.primary"
+                    textAlign="center"
+                  >
+                    No Questions Found
+                  </Typography>
+                </Grid>
+              </div>
+            ) : (
+              <>
+                <div className="container">
+                  <Grid
+                    container
+                    spacing={3}
+                    direction="row"
+                    justify="center"
+                    alignItems="center"
+                    padding="2px"
+                  >
+                    {allQuestions.map((question) => {
+                      return <CardComponentForExplore data={question} />;
+                    })}
+                  </Grid>
+                </div>
+              </>
+            )}
+          </>
+        )}
+      </div>
+      <Footer />
     </>
   );
 }
