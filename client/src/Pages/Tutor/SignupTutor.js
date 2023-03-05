@@ -1,8 +1,11 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Footer from "../../Components/Footer";
+import { Divider } from "@mui/material";
 import { Button, Form, Spinner } from "react-bootstrap";
 import AssignmentIndIcon from "@mui/icons-material/AssignmentInd";
+import { SERVER_URI } from "../../apiService";
 function SignupTutor() {
   const [username, setUsername] = useState("");
   const [name, setName] = useState("");
@@ -53,7 +56,7 @@ function SignupTutor() {
       setAllvalues(true);
     } else {
       await axios
-        .post(`${process.env.SERVER_URI}/api/tutor/add/newtutor`, {
+        .post(`${SERVER_URI}/api/tutor/add/newtutor`, {
           username: username,
           name: name,
           email: email,
@@ -74,130 +77,146 @@ function SignupTutor() {
   };
   return (
     <>
-      {loading ? (
-        <>
-          <div className="spinner">
-            <Spinner
-              animation="border"
-              variant="primary"
-              className="TempSpinner"
-            />
-          </div>
-        </>
-      ) : (
-        <>
-          <div className="container">
-            <div class="row">
-              <div class="col-md-4 col-lg-3"></div>
-              <div class="col-md-8 col-lg-6">
-                <h1 className="text-center">Sign Up Tutor</h1>
-                <div class="demo-content bg-alt">
-                  <form onSubmit={handleFormSubmit}>
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Name </label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="userNameId"
-                        aria-describedby="userNameHelp"
-                        placeholder="Enter Your UserName"
-                        onChange={(event) => setName(event.target.value)}
-                        value={name}
-                      />
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">UserName</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="userNameId"
-                        aria-describedby="userNameHelp"
-                        placeholder="Enter Your UserName"
-                        onChange={(event) => setUsername(event.target.value)}
-                        value={username}
-                      />
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Email </label>
-                      <input
-                        type="email"
-                        class="form-control"
-                        id="userNameId"
-                        aria-describedby="userNameHelp"
-                        placeholder="Enter Your UserName"
-                        onChange={(event) => setEmail(event.target.value)}
-                        value={email}
-                      />
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputPassword1">Password</label>
-                      <input
-                        type="password"
-                        class="form-control"
-                        id="examplePassword"
-                        aria-describedby="passwordHelp"
-                        placeholder="Password"
-                        onChange={(event) => setPassword(event.target.value)}
-                        value={password}
-                      />
-                    </div>
-
-                    <div class="form-check">
-                      <p className="details-desciptions-text">
-                        Please Add Your Profile Image
-                        <AssignmentIndIcon />
-                      </p>
-                      <input
-                        type="file"
-                        onChange={(event) => setImage(event.target.files[0])}
-                      />
-                      <Button variant="primary" onClick={HandlerFunction}>
-                        Upload Image to database
-                      </Button>
-                      {uploaded === true ? (
-                        <Button variant="primary" disabled>
-                          <Spinner
-                            as="span"
-                            animation="grow"
-                            size="sm"
-                            role="status"
-                            aria-hidden="true"
-                          />
-                          Loading...
-                        </Button>
-                      ) : (
-                        <></>
-                      )}
-                    </div>
-                    {allvalues === true ? (
-                      <>
-                        <div class="alert">
-                          <span
-                            class="closebtn"
-                            onClick={() => setAllvalues(false)}
-                          >
-                            &times;
-                          </span>
-                          <strong>Please!</strong> Fill All the Fields :(
-                        </div>
-                      </>
-                    ) : (
-                      <></>
-                    )}
-                    <button
-                      onClick={handleFormSubmit}
-                      type="submit"
-                      class="btn btn-primary"
-                    >
-                      Submit
-                    </button>
-                  </form>
+      <div className="container">
+        <div class="row">
+          <div class="col-md-4 col-lg-3"></div>
+          <div class="col-md-8 col-lg-6">
+            <h1
+              className="text-center mt-5 mb-5  font-weight-bold "
+              style={{
+                color: "#4E31AA",
+              }}
+            >
+              Sign Up
+            </h1>
+            <Divider />
+            <div
+              class="demo-content bg-alt 
+            p-5
+            
+            "
+            >
+              <form onSubmit={handleFormSubmit}>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">
+                    <p className="details-desciptions-text">
+                      <strong>Enter Your Name</strong>
+                    </p>
+                  </label>
+                  <input
+                    type="text"
+                    class="form-control text-capitalize  font-weight-bold text-primary h5 "
+                    id="userNameId"
+                    aria-describedby="userNameHelp"
+                    placeholder="Enter Your Name"
+                    onChange={(event) => setName(event.target.value)}
+                  />
                 </div>
-              </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">
+                    <p className="details-desciptions-text">
+                      <strong>Enter Your User Name</strong>
+                    </p>
+                  </label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="userNameId"
+                    aria-describedby="userNameHelp"
+                    placeholder="Enter Your UserName"
+                    onChange={(event) => setUsername(event.target.value)}
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">
+                    <p className="details-desciptions-text">
+                      <strong>Enter Your Email</strong>
+                    </p>
+                  </label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="userNameId"
+                    aria-describedby="userNameHelp"
+                    placeholder="Enter Your UserName"
+                    onChange={(event) => setEmail(event.target.value)}
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">
+                    <p className="details-desciptions-text">
+                      <strong>Enter Your Password</strong>
+                    </p>
+                  </label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="examplePassword"
+                    aria-describedby="passwordHelp"
+                    placeholder="Password"
+                    onChange={(event) => setPassword(event.target.value)}
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="exampleInputEmail1">
+                    <p className="details-desciptions-text">
+                      <strong>Add Your profile Image</strong>
+                    </p>
+                  </label>
+                  <br />
+                  <input
+                    type="file"
+                    onChange={(event) => {
+                      setImage(event.target.files[0]);
+                    }}
+                  />
+                  <Button variant="primary" onClick={HandlerFunction}>
+                    Upload Image to database
+                  </Button>
+                  {uploaded === true ? (
+                    <button variant="primary" disabled>
+                      <Spinner
+                        as="span"
+                        animation="grow"
+                        size="sm"
+                        role="status"
+                        aria-hidden="true"
+                      />
+                      Loading...
+                    </button>
+                  ) : (
+                    <></>
+                  )}
+                </div>
+                {allvalues === true ? (
+                  <>
+                    <div class="alert">
+                      <span
+                        class="closebtn"
+                        onClick={() => setAllvalues(false)}
+                      >
+                        &times;
+                      </span>
+                      <strong>Please!</strong> Fill all the values
+                    </div>
+                  </>
+                ) : (
+                  <></>
+                )}
+                <button
+                  onClick={handleFormSubmit}
+                  type="submit"
+                  class="btn btn-primary"
+                >
+                  Submit
+                </button>
+              </form>
             </div>
           </div>
-        </>
-      )}
+        </div>
+      </div>
+      <Footer />
     </>
   );
 }

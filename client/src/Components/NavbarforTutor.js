@@ -23,6 +23,9 @@ function NavbarforTutor() {
               style={{ maxHeight: "100px" }}
               navbarScroll
             >
+              <Link to="/" className="links">
+                <h1>MeggChegg</h1>
+              </Link>
               <Nav className="me-auto">
                 <Link to="/tutor/answerquestion" className="links">
                   Solve Question

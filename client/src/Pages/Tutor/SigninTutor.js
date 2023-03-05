@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Spinner } from "react-bootstrap";
-
+import { SERVER_URI } from "../../apiService";
 function SigninTutor() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -17,7 +17,7 @@ function SigninTutor() {
   const handleFormSubmit = (event) => {
     event.preventDefault();
     axios
-      .post(`${process.env.SERVER_URI}/api/tutor/validate`, {
+      .post(`${SERVER_URI}/api/tutor/validate`, {
         email: email,
         password: password,
       })

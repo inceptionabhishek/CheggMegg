@@ -5,14 +5,15 @@ import { Spinner } from "react-bootstrap";
 import axios from "axios";
 import { Navigate, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-
+import { SERVER_URI } from "../apiService";
+import Editor from "./Editor/editorEdit";
 function DisplayIndividualQuestionForTutor() {
   const [question, setQuestion] = useState({});
   const [answer, setAnswer] = useState("");
   const [goodAlert, setGoodAlert] = useState(false);
   const question_id = localStorage.getItem("question_id");
   const [loading, setLoading] = useState(true);
-  const uri = `${process.env.SERVER_URI}/api/question/getquestion`;
+  const uri = `${SERVER_URI}/api/question/getquestion`;
   useEffect(() => {
     axios
       .post(uri, {
@@ -25,9 +26,10 @@ function DisplayIndividualQuestionForTutor() {
       .catch((err) => {
         console.log(err);
       });
-  }, [question]);
-  const api = `${process.env.SERVER_URI}/api/solved/add/tutor`;
+  }, [loading]);
+  const api = `${SERVER_URI}/api/solved/add/tutor`;
   const answerQuestionHandler = async (e) => {
+    console.log(answer);
     e.preventDefault();
     if (question.status === true) {
       alert("Question already solved");
@@ -84,20 +86,20 @@ function DisplayIndividualQuestionForTutor() {
                 </div>
               </div>
             </div>
+            <Form.Group
+              className="mb-3"
+              controlId="exampleForm.ControlTextarea1"
+            >
+              <Form.Label className="askQuestion">Add Your Answer!</Form.Label>
+              <Editor data={answer} setAnswer={setAnswer} />
+            </Form.Group>
+            <Link to="/tutor/question">
+              <Button variant="primary" onClick={answerQuestionHandler}>
+                Submit
+              </Button>
+            </Link>
           </div>
-          <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-            <Form.Label className="askQuestion">Add Your Answer!</Form.Label>
-            <Form.Control
-              as="textarea"
-              onChange={(e) => setAnswer(e.target.value)}
-              rows={3}
-            />
-          </Form.Group>
-          <Link to="/tutor/question">
-            <Button variant="primary" onClick={answerQuestionHandler}>
-              Submit
-            </Button>
-          </Link>
+
           {goodAlert === true ? (
             <>
               <div class="w3-panel w3-green">
