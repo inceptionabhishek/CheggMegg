@@ -108,11 +108,10 @@ router.route("/getTopTutors").get((req, res) => {
 });
 
 // Get Questionscount by Student
-router.route("/getQuestionsCountByStudent").get((req, res) => {
-  console.log(req.body.email);
+router.route("/getQuestionsCountByStudent").post((req, res) => {
   QuestionDatabase.find(
     {
-      studentwhoaskedemail: req.body.email,
+      studentemail: req.body.email,
     },
     (err, questions) => {
       if (err) {
@@ -123,6 +122,23 @@ router.route("/getQuestionsCountByStudent").get((req, res) => {
     }
   );
 });
+
+// Get QuestionSolved count by Student
+router.route("/getQuestionsSolvedCountByStudent").post((req, res) => {
+  SolvedQuestions.find(
+    {
+      studentwhoaskedemail: req.body.email,
+    },
+    (err, questions) => {
+      if (err) {
+        res.json({ msg: "error" });
+      } else {
+        res.json({ msg: "success2", questions: questions.length });
+      }
+    }
+  );
+});
+
 // Get QuestionSolved count by Tutor
 router.route("/getQuestionsSolvedCountByTutor").post((req, res) => {
   SolvedQuestions.find(
