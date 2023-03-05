@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Card, Form, Spinner } from "react-bootstrap";
 import { Button } from "@mui/material";
-import { Link } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
 import { SERVER_URI } from "../../apiService";
 
@@ -36,18 +35,17 @@ function StudentProfile() {
     };
     fetchProfile();
   }, [loading]);
-  const HandlerUpdate = () => {
-    localStorage.setItem("nameProfile", profile.name);
-    localStorage.setItem("Tochangeemail", profile.email);
-  };
   function MyVerticallyCenteredModal(props) {
+    const [uploaded, setUploaded] = useState(false);
     const [newName, setNewName] = useState("");
+    const [image, setImage] = useState("");
     const updateHandler = async (e) => {
       e.preventDefault();
       await axios
         .patch(`${SERVER_URI}/api/students/updateprofile`, {
           email: localStorage.getItem("email"),
           name: newName,
+          profileimage: image,
         })
         .then((res) => {
           setLoading(true);
@@ -55,7 +53,26 @@ function StudentProfile() {
           props.onHide();
         });
     };
-
+    const HandlerFunction = async () => {
+      if (image === "") {
+      } else {
+        setUploaded(true);
+        const formData = new FormData();
+        formData.append("file", image);
+        formData.append("upload_preset", "CheggClone");
+        formData.append("cloud_name", "dkeiewkz6");
+        await fetch("https://api.cloudinary.com/v1_1/dkeiewkz6/image/upload", {
+          method: "post",
+          body: formData,
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            setImage(data.url);
+            setUploaded(false);
+          });
+      }
+      setUploaded(false);
+    };
     return (
       <Modal
         {...props}
@@ -81,15 +98,50 @@ function StudentProfile() {
 
         <Modal.Body>
           <Form>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Label>Name</Form.Label>
+            <div class="form-group">
+              <label for="exampleInputEmail1">
+                <p className="details-desciptions-text">
+                  <strong>Edit Name</strong>
+                </p>
+              </label>
               <Form.Control
                 type="text"
                 placeholder="Enter Name"
-                defaultValue={props.name}
                 onChange={(event) => setNewName(event.target.value)}
               />
-            </Form.Group>
+            </div>
+            <br />
+            <div class="form-group">
+              <label for="exampleInputEmail1">
+                <p className="details-desciptions-text">
+                  <strong>Add Your profile Image</strong>
+                </p>
+              </label>
+              <br />
+              <input
+                type="file"
+                onChange={(event) => {
+                  setImage(event.target.files[0]);
+                }}
+              />
+              <Button variant="primary" onClick={HandlerFunction}>
+                Upload Image to database
+              </Button>
+              {uploaded === true ? (
+                <button variant="primary" disabled>
+                  <Spinner
+                    as="span"
+                    animation="grow"
+                    size="sm"
+                    role="status"
+                    aria-hidden="true"
+                  />
+                  Loading...
+                </button>
+              ) : (
+                <></>
+              )}
+            </div>
             <Button
               style={{
                 display: "flex",
