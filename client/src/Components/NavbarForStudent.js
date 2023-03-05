@@ -23,22 +23,47 @@ function NavbarForStudent() {
               style={{ maxHeight: "100px" }}
               navbarScroll
             >
-              <Nav className="me-auto">
-                <Link to="/student/askquestion" className="links">
-                  AsknewQuestion
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  width: "100%",
+                }}
+              >
+                <Link to="/" className="links">
+                  <h1>MeggChegg</h1>
                 </Link>
-                <Link to="/student/solvedquestions" className="links">
-                  SolvedQuestions
-                </Link>
-                <Link to="/student/unsolvedquestions" className="links">
-                  UnsolvedQuestions
-                </Link>
+                <Nav className="me-auto">
+                  <Link to="/student/askquestion">
+                    <Button variant="outline-light" style={{ margin: "10px" }}>
+                      <VpnKeyIcon />
+                      <span className="links">Ask Question</span>
+                    </Button>
+                  </Link>
+
+                  <Link to="/student/solvedquestions">
+                    <Button variant="outline-light" style={{ margin: "10px" }}>
+                      <VpnKeyIcon />
+                      <span className="links">Solved</span>
+                    </Button>
+                  </Link>
+
+                  <Link to="/student/unsolvedquestions">
+                    <Button variant="outline-light" style={{ margin: "10px" }}>
+                      <VpnKeyIcon />
+                      <span className="links">UnSolved</span>
+                    </Button>
+                  </Link>
+                </Nav>
+              </div>
+            </Nav>
+            <Nav className="ml-auto" navbarScroll>
+              <Button variant="outline-light" style={{ margin: "10px" }}>
                 <Link to="/student/profile" className="links">
                   Profile
                 </Link>
-              </Nav>
-            </Nav>
-            <Nav className="ml-auto" navbarScroll>
+              </Button>
               <Button variant="outline-light" onClick={handlelogout}>
                 <Link to="/" className="links">
                   <LoginIcon />

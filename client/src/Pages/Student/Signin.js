@@ -3,7 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 import { Navigate } from "react-router-dom";
 import { Spinner } from "react-bootstrap";
-
+import { SERVER_URI } from "../../apiService";
 function Signin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -19,7 +19,7 @@ function Signin() {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     await axios
-      .post(`${process.env.SERVER_URI}/api/students/validate`, {
+      .post(`${SERVER_URI}/api/students/validate`, {
         email: email,
         password: password,
       })
