@@ -23,40 +23,37 @@ function NavbarForStudent() {
               style={{ maxHeight: "100px" }}
               navbarScroll
             >
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  width: "100%",
-                }}
-              >
-                <Link to="/" className="links">
-                  <h1>MeggChegg</h1>
+              <Link to="/" className="links">
+                <h1>MeggChegg</h1>
+              </Link>
+
+              <Nav className="me-auto">
+                <Link to="/student/askquestion">
+                  <Button
+                    variant="outline-light"
+                    style={{ margin: "10px",  }}
+                  >
+                    <VpnKeyIcon />
+                    <span className="links"
+                      style = {{marginLeft: "10px"}}
+                    >Ask Question</span>
+                  </Button>
                 </Link>
-                <Nav className="me-auto">
-                  <Link to="/student/askquestion">
-                    <Button variant="outline-light" style={{ margin: "10px" }}>
-                      <VpnKeyIcon />
-                      <span className="links">Ask Question</span>
-                    </Button>
-                  </Link>
 
-                  <Link to="/student/solvedquestions">
-                    <Button variant="outline-light" style={{ margin: "10px" }}>
-                      <VpnKeyIcon />
-                      <span className="links">Solved</span>
-                    </Button>
-                  </Link>
+                <Link to="/student/solvedquestions">
+                  <Button variant="outline-light" style={{ margin: "10px" }}>
+                    <VpnKeyIcon />
+                    <span className="links">Solved</span>
+                  </Button>
+                </Link>
 
-                  <Link to="/student/unsolvedquestions">
-                    <Button variant="outline-light" style={{ margin: "10px" }}>
-                      <VpnKeyIcon />
-                      <span className="links">UnSolved</span>
-                    </Button>
-                  </Link>
-                </Nav>
-              </div>
+                <Link to="/student/unsolvedquestions">
+                  <Button variant="outline-light" style={{ margin: "10px" }}>
+                    <VpnKeyIcon />
+                    <span className="links">UnSolved</span>
+                  </Button>
+                </Link>
+              </Nav>
             </Nav>
             <Nav className="ml-auto" navbarScroll>
               <Button variant="outline-light" style={{ margin: "10px" }}>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Spinner } from "react-bootstrap";
 import { SERVER_URI } from "../apiService";
+import Footer from "./Footer";
 function DisplayIndividualQuestion() {
   const [question, setQuestion] = useState({});
   const question_id = localStorage.getItem("question_id");
@@ -57,6 +58,7 @@ function DisplayIndividualQuestion() {
               </div>
             </div>
           </div>
+          {/* <Footer /> */}
         </>
       )}
     </>
