@@ -37,12 +37,11 @@ const Editor = ({ data }) => {
 
   return (
     <ReactQuill
-      theme="bubble"
+      theme="snow"
       modules={modules}
       formats={formats}
       value={text}
       onChange={handleProcedureContentChange}
-      // readOnly={true}
     />
   );
 };
