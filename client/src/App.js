@@ -102,6 +102,7 @@ function App() {
                   element={<UpdateProfile />}
                 />
                 <Route path="/student/viewanswer" element={<ViewAnswers />} />
+                <Route path="/blog" element={<Blog1 />} />
               </>
             ) : (
               <>
@@ -123,6 +124,7 @@ function App() {
                       path="/tutor/getquestion"
                       element={<DisplayIndividualQuestionForTutor />}
                     />
+                    <Route path="/blog" element={<Blog1 />} />
                   </>
                 ) : (
                   <>
@@ -141,6 +143,7 @@ function App() {
                           path="/admin/allquestions"
                           element={<AllQuestionsAsked />}
                         />
+                        <Route path="/blog" element={<Blog1 />} />
                       </>
                     ) : (
                       <>
