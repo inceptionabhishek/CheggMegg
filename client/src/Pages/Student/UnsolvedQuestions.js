@@ -40,7 +40,13 @@ function UnsolvedQuestions() {
           />
         </div>
       ) : (
-        <Container>
+        <Container
+          style={{
+            backgroundColor: "#f5f5f5",
+            minHeight: "100vh",
+            paddingTop: "20px",
+          }}
+        >
           <h1 className="askQuestion">Unsolved Questions</h1>
           <br />
           <br />

@@ -1,6 +1,6 @@
 import React from "react";
 import Box from "@mui/material/Box";
-import { Grid, Typography } from "@mui/material";
+import { Grid, Popover, Stack, Typography } from "@mui/material";
 import Button from "@mui/material/Button";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -32,10 +32,11 @@ function UnsolvedQuestionsList(props) {
         <Box
           display="flex"
           flexDirection="column"
-          alignItems="center"
-          justifyContent="center"
+          // alignItems="center"
+          // justifyContent="center"
           p={2}
-          m={3}
+          marginBottom={7}
+          // m={3}
           sx={{ width: 1 }}
           bgcolor="background.paper"
           boxShadow={3}
@@ -48,8 +49,9 @@ function UnsolvedQuestionsList(props) {
               WebkitLineClamp: 3,
             }}
             variant="body1"
+            style={{ fontWeight: "bold", color: "#000000", fontSize: "20px" }}
           >
-            {props.title}
+            <span>Question : </span> {props.title}
           </Typography>
           <img
             src={props.image}
@@ -66,31 +68,56 @@ function UnsolvedQuestionsList(props) {
             }}
             variant="body1"
           >
+            <span>
+              <b>Description :</b>{" "}
+            </span>
             {props.description}
           </Typography>
-          <Link to="/student/getquestion">
-            <Button variant="contained" color="primary" onClick={handler}>
-              View Question
-            </Button>
-          </Link>
-          <Button
-            variant="outlined"
-            color="error"
-            className="btn"
-            onClick={HandlerDelete}
+          <Stack
+            spacing={2}
+            direction="row"
+            style={{
+              marginTop: "10px",
+            }}
           >
-            Delete
-          </Button>
-          <Link to="/students/updatequestion">
+            <Link to="/student/getquestion">
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={handler}
+                style={{
+                  fontSize: "10px",
+                }}
+              >
+                View Question
+              </Button>
+            </Link>
+
             <Button
-              variant="outlined"
-              color="success"
+              variant="contained"
+              color="error"
               className="btn"
-              onClick={HandlerUpdate}
+              onClick={HandlerDelete}
+              style={{
+                fontSize: "10px",
+              }}
             >
-              Update
+              Delete
             </Button>
-          </Link>
+            <Link to="/students/updatequestion">
+              <Button
+                variant="contained"
+                color="success"
+                className="btn"
+                style={{
+                  fontSize: "10px",
+                }}
+                onClick={HandlerUpdate}
+              >
+                Update
+              </Button>
+            </Link>
+          </Stack>
         </Box>
       </Grid>
     </div>

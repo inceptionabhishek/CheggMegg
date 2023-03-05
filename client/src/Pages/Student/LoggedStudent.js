@@ -18,23 +18,28 @@ function LoggedStudent() {
     }, 1000);
   }, []);
   const HandlerFunction = async (e) => {
-    setUploaded(true);
     e.preventDefault();
-    const formData = new FormData();
-    formData.append("file", image);
-    formData.append("upload_preset", "CheggClone");
-    formData.append("cloud_name", "dkeiewkz6");
-    await fetch("https://api.cloudinary.com/v1_1/dkeiewkz6/image/upload", {
-      method: "post",
-      body: formData,
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setImage(data.url);
-        console.log(data);
-        setUploaded(false);
-      });
-    setUploaded(false);
+    if (!image) {
+      setAlert(true);
+    } else {
+      setUploaded(true);
+      e.preventDefault();
+      const formData = new FormData();
+      formData.append("file", image);
+      formData.append("upload_preset", "CheggClone");
+      formData.append("cloud_name", "dkeiewkz6");
+      await fetch("https://api.cloudinary.com/v1_1/dkeiewkz6/image/upload", {
+        method: "post",
+        body: formData,
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setImage(data.url);
+          console.log(data);
+          setUploaded(false);
+        });
+      setUploaded(false);
+    }
   };
   const handleChange = async (e) => {
     e.preventDefault();
@@ -115,13 +120,19 @@ function LoggedStudent() {
                   placeholder="Image"
                   onChange={(event) => setImage(event.target.files[0])}
                 />
-                <Button
-                  variant="primary"
+                <button
                   type="submit"
                   onClick={HandlerFunction}
+                  style={{
+                    marginTop: "10px",
+                    marginBottom: "10px",
+                    marginRight: "10px",
+                    backgroundColor: "#FFC77F",
+                    border: "none",
+                  }}
                 >
-                  Upload Image to database
-                </Button>
+                  Upload..
+                </button>
                 {uploaded === true ? (
                   <Button variant="primary" disabled>
                     <Spinner
