@@ -94,7 +94,7 @@ router.route("/askquestion").post((req, res) => {
         answerimage: req.body.answerimage,
         tag: req.body.tag,
       });
-      
+
       student
         .save()
         .then((result) => {
@@ -219,7 +219,29 @@ router.route("/getprofile").post((req, res) => {
     });
 });
 
-// Updated Profile 
+// Updated Profile
+router.route("/updateprofile").patch((req, res) => {
+  Student.findOneAndUpdate(
+    { email: req.body.email },
+    {
+      $set: {
+        name: req.body.name,
+        username: req.body.username,
+        profileimage: req.body.profileimage,
+      },
+    }
+  )
 
+    .then((result) => {
+      res.status(200).json({
+        message: "Profile Updated",
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        error: err,
+      });
+    });
+});
 
 module.exports = router;

@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Card, Spinner } from "react-bootstrap";
+import { Card, Form, Spinner } from "react-bootstrap";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
-import { height } from "@mui/system";
+import Modal from "react-bootstrap/Modal";
 import { SERVER_URI } from "../../apiService";
+
 function StudentProfile() {
   const uri = `${SERVER_URI}/api/students/getprofile`;
   const totquestionuri = `${SERVER_URI}/admin/getQuestionsCountByStudent`;
@@ -14,7 +15,7 @@ function StudentProfile() {
   const [totalquestionCount, setQuestionCount] = useState(0);
   const [solvedquestionCount, setSolvedQuestionCount] = useState(0);
   const [loading, setLoading] = useState(true);
-
+  const [modalShow, setModalShow] = React.useState(false);
   useEffect(() => {
     const fetchProfile = async () => {
       const profileData = await axios.post(uri, {
@@ -39,6 +40,79 @@ function StudentProfile() {
     localStorage.setItem("nameProfile", profile.name);
     localStorage.setItem("Tochangeemail", profile.email);
   };
+  function MyVerticallyCenteredModal(props) {
+    const [newName, setNewName] = useState("");
+    const updateHandler = async (e) => {
+      e.preventDefault();
+      await axios
+        .patch(`${SERVER_URI}/api/students/updateprofile`, {
+          email: localStorage.getItem("email"),
+          name: newName,
+        })
+        .then((res) => {
+          setLoading(true);
+          setLoading(false);
+          props.onHide();
+        });
+    };
+
+    return (
+      <Modal
+        {...props}
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Header closeButton>
+          <Modal.Title
+            id="contained-modal-title-vcenter"
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              fontSize: "20px",
+              fontColor: "black",
+              fontWeight: "bold",
+            }}
+          >
+            Update Profile
+          </Modal.Title>
+        </Modal.Header>
+
+        <Modal.Body>
+          <Form>
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Label>Name</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter Name"
+                defaultValue={props.name}
+                onChange={(event) => setNewName(event.target.value)}
+              />
+            </Form.Group>
+            <Button
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                fontSize: "20px",
+                fontColor: "black",
+                fontWeight: "bold",
+                backgroundColor: "#E9A178",
+              }}
+              type="submit"
+              onClick={updateHandler}
+            >
+              Submit
+            </Button>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button onClick={props.onHide}>Close</Button>
+        </Modal.Footer>
+      </Modal>
+    );
+  }
   return (
     <>
       {loading ? (
@@ -83,21 +157,25 @@ function StudentProfile() {
                 <Card.Text>
                   Total Questions Solved : {solvedquestionCount.questions}
                 </Card.Text>
-                <Link to="/students/updateprofile">
-                  <Button
-                    variant="outlined"
-                    color="success"
-                    className="btn"
-                    onClick={HandlerUpdate}
-                  >
-                    Update
-                  </Button>
-                </Link>
+
+                <Button
+                  variant="outlined"
+                  color="success"
+                  className="btn"
+                  onClick={() => setModalShow(true)}
+                >
+                  Update
+                </Button>
               </Card.Body>
             </Card>
           </div>
         </>
       )}
+      <MyVerticallyCenteredModal
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+        name={profile.name}
+      />
     </>
   );
 }
