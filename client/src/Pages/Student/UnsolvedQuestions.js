@@ -9,13 +9,7 @@ function UnsolvedQuestions() {
   const email = localStorage.getItem("email");
   const [questions, setQuestions] = useState([]);
   const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 1000);
-  }, []);
   const uri = `${SERVER_URI}/api/question/getunsolvedquestion`;
-
   useEffect(() => {
     axios
       .post(uri, {
@@ -23,11 +17,12 @@ function UnsolvedQuestions() {
       })
       .then((res) => {
         setQuestions(res.data);
+        setLoading(false);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, [questions]);
+  }, [loading]);
 
   return (
     <>

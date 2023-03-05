@@ -38,8 +38,9 @@ function UnsolvedQuestionsList(props) {
           marginBottom={7}
           // m={3}
           sx={{ width: 1 }}
+          // width="300px"
           bgcolor="background.paper"
-          boxShadow={3}
+          boxShadow={10}
         >
           <Typography
             sx={{

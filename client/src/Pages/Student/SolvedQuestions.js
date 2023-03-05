@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Grid, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import axios from "axios";
-import { Spinner } from "react-bootstrap";
+import { Container, Spinner } from "react-bootstrap";
 import SolvedQuestionsList from "../../Components/Student/SolvedQuestionsList";
+import { SERVER_URI } from "../../apiService";
 function SolvedQuestions() {
   const [solved, setSolved] = useState([]);
-  const api = `${process.env.SERVER_URI}/api/solved/view/student`;
+  const api = `${SERVER_URI}/api/solved/view/student`;
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     axios
@@ -25,9 +26,6 @@ function SolvedQuestions() {
     "https://res.cloudinary.com/dkeiewkz6/image/upload/v1646113532/rkvgtstl4xdqcey0x8lr.png";
   return (
     <>
-      <h1 className="askQuestion">Solved Questions</h1>
-      <br />
-      <br />
       {loading ? (
         <>
           <div className="spinner">
@@ -40,25 +38,36 @@ function SolvedQuestions() {
         </>
       ) : (
         <>
-          {solved.length === 0 ? (
-            <div className="divquestionlist">
-              <Typography variant="h5" component="h2">
-                No Solved Questions
-              </Typography>
-            </div>
-          ) : (
-            solved.map((question) => (
-              <SolvedQuestionsList
-                id={question._id}
-                title={question.questionTitle}
-                image={question.questionImage}
-                description={question.questionDescription}
-                tutoremail={question.tutoremail}
-                tutorans={question.tutorans}
-                student={question.studentemail}
-              />
-            ))
-          )}
+          <Container
+            style={{
+              backgroundColor: "#f5f5f5",
+              minHeight: "100vh",
+              paddingTop: "20px",
+            }}
+          >
+            <h1 className="askQuestion">Solved Questions</h1>
+            <br />
+            <br />
+            {solved.length === 0 ? (
+              <div className="divquestionlist">
+                <Typography variant="h5" component="h2">
+                  No Solved Questions
+                </Typography>
+              </div>
+            ) : (
+              solved.map((question) => (
+                <SolvedQuestionsList
+                  id={question._id}
+                  title={question.questionTitle}
+                  image={question.questionImage}
+                  description={question.questionDescription}
+                  tutoremail={question.tutoremail}
+                  tutorans={question.tutorans}
+                  student={question.studentemail}
+                />
+              ))
+            )}
+          </Container>
         </>
       )}
     </>

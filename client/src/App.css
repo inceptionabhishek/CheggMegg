@@ -58,7 +58,7 @@
   object-fit: cover;
 }
 .navbar {
-  background-color: #DC8449;
+  background-color: #dc8449;
   padding: 3px;
 }
 
@@ -142,11 +142,13 @@
   color: grey;
 }
 .spinner {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-left: 50px;
-  margin-right: 50px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform: -webkit-translate(-50%, -50%);
+  transform: -moz-translate(-50%, -50%);
+  transform: -ms-translate(-50%, -50%);
 }
 .Error {
   display: flex;
@@ -158,6 +160,7 @@
 }
 .TempSpinner {
   font-size: 200px;
+  background-color: #d7ea2b;
 }
 .postdisplay {
   display: flex;
