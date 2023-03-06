@@ -25,7 +25,17 @@ function Explore() {
 
   return (
     <>
-      <h2 className="Top-Section2">Explore All Questions</h2>
+      <h2
+        style={{
+          textAlign: "center",
+          marginTop: "100px",
+          marginBottom: "50px",
+          color: "#3f51b5",
+        }}
+      >
+        Explore All Questions
+      </h2>
+      <br />
       <div
         style={{
           marginBottom: "500px",
@@ -61,7 +71,14 @@ function Explore() {
               </div>
             ) : (
               <>
-                <div className="container">
+                <Grid container style={{ maxWidth: 1410, margin: "auto" }}>
+                  <Grid item md={6} sm={12} m={10}>
+                    {allQuestions.map((question) => {
+                      return <CardComponentForExplore data={question} />;
+                    })}
+                  </Grid>
+                </Grid>
+                {/* <div className="container">
                   <Grid
                     container
                     spacing={3}
@@ -74,7 +91,7 @@ function Explore() {
                       return <CardComponentForExplore data={question} />;
                     })}
                   </Grid>
-                </div>
+                </div> */}
               </>
             )}
           </>

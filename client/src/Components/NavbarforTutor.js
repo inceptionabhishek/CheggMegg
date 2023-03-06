@@ -33,12 +33,6 @@ function NavbarforTutor() {
                 <Link to="/tutor/solvedquestions" className="links">
                   SolvedQuestions
                 </Link>
-                <Link to="/tutor/mycourse" className="links">
-                  My courses
-                </Link>
-                <Link to="/tutor/createcourse" className="links">
-                  Create Course
-                </Link>
                 <Link to="/tutorprofile" className="links">
                   Profile
                 </Link>

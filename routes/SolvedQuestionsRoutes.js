@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 
 const SolvedQuestions = require("../models/SolvedQuestionDataBase.js");
 const unsolvedQuestionDatabase = require("../models/QuestionDatabase.js");
+const QuestionDatabase = require("../models/QuestionDatabase.js");
 
 // Add solved question
 router.post("/add/tutor", async (req, res, next) => {
@@ -60,7 +61,7 @@ router.post("/view/student", async (req, res) => {
   const solvedQuestion = await SolvedQuestions.find({
     studentemail: req.body.studentemail,
   });
-  
+
   res.status(200).json({
     message: "Solved questions fetched successfully",
     data: solvedQuestion,
@@ -74,8 +75,41 @@ router.get("/view/all", async (req, res) => {
     data: solvedQuestion,
   });
 });
-
-
-
+// Get solved question by id
+router.post("/viewbyid", async (req, res) => {
+  const id = req.body.id;
+  const solvedQuestion = await SolvedQuestions.find({
+    _id: id,
+  });
+  res.status(200).json({
+    message: "Solved questions fetched successfully",
+    data: solvedQuestion,
+  });
+});
+//update answer
+router.patch("/update", async (req, res) => {
+  const newAnswer = req.body.tutorans;
+  console.log(newAnswer);
+  const id = req.body.id;
+  console.log(id);
+  SolvedQuestions.findOneAndUpdate(
+    { _id: id },
+    {
+      $set: {
+        tutorans: newAnswer,
+      },
+    }
+  )
+    .then((result) => {
+      res.status(200).json({
+        message: "Answer updated successfully",
+      });
+    })
+    .catch((error) => {
+      res.status(400).json({
+        error: error,
+      });
+    });
+});
 
 module.exports = router;

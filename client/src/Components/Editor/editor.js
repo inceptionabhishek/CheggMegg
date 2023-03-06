@@ -5,6 +5,7 @@ import "react-quill/dist/quill.bubble.css";
 const toolbarOptions = ["bold"];
 
 const Editor = ({ data }) => {
+  console.log("editor", data);
   const [text, setText] = useState(data);
 
   const modules = {
@@ -42,7 +43,7 @@ const Editor = ({ data }) => {
       formats={formats}
       value={text}
       onChange={handleProcedureContentChange}
-      // readOnly={true}
+       readOnly={true}
     />
   );
 };

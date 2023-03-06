@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 
 function SolvedQuestionsListForTutor(props) {
   const saveinLocal = () => {
+    localStorage.setItem("TutorviewId", props.id);
     localStorage.setItem("TutorviewTitle", props.title);
     localStorage.setItem("TutorviewDescription", props.description);
     localStorage.setItem("TutorviewImage", props.image);
