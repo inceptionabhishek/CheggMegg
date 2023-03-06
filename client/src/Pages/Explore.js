@@ -71,14 +71,14 @@ function Explore() {
               </div>
             ) : (
               <>
-                <Grid container style={{ maxWidth: 1410, margin: "auto" }}>
-                  <Grid item md={6} sm={12} m={10}>
+                {/* <Grid container style={{ maxWidth: 1410, margin: "auto" }}>
+                  <Grid item md={6} sm={12} m={10} >
                     {allQuestions.map((question) => {
                       return <CardComponentForExplore data={question} />;
                     })}
                   </Grid>
-                </Grid>
-                {/* <div className="container">
+                </Grid> */}
+                <div className="container">
                   <Grid
                     container
                     spacing={3}
@@ -91,7 +91,7 @@ function Explore() {
                       return <CardComponentForExplore data={question} />;
                     })}
                   </Grid>
-                </div> */}
+                </div>
               </>
             )}
           </>

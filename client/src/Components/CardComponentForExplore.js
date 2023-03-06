@@ -11,7 +11,7 @@ function CardComponentForExplore(props) {
   console.log(props.data);
   return (
     <>
-      <Card sx={{ maxWidth: 345 }}>
+      <Card sx={{ maxWidth: 345, margin: 6 }}>
         <CardMedia
           component="img"
           alt="green iguana"

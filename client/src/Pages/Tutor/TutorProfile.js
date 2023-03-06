@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Card, Button, Spinner } from "react-bootstrap";
 import axios from "axios";
-const uri = process.env.SERVER_URI;
+import { SERVER_URI } from "../../apiService";
 function TutorProfile() {
-  const url = `${uri}/api/tutor/getprofile`;
+  const url = `${SERVER_URI}/api/tutor/getprofile`;
   const [profile, setProfile] = useState([]);
   const [loading, setLoading] = useState(true);
   const [solvedCount, setSolvedCount] = useState(0);
 
-  const urlQuestionCount = `${uri}/admin/getQuestionsSolvedCountByTutor`;
+  const urlQuestionCount = `${SERVER_URI}/admin/getQuestionsSolvedCountByTutor`;
   const email = localStorage.getItem("email");
   useEffect(() => {
     axios
