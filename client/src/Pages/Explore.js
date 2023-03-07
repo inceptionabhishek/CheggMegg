@@ -6,6 +6,7 @@ import { Spinner } from "react-bootstrap";
 import CardComponentForExplore from "../Components/CardComponentForExplore";
 import { SERVER_URI } from "../apiService";
 import Footer from "../Components/Footer";
+import ExploreModal from "./ExploreModal";
 function Explore() {
   const api = `${SERVER_URI}/api/solved/view/all`;
   const [allQuestions, setAllQuestions] = useState([]);
@@ -28,8 +29,6 @@ function Explore() {
       <h2
         style={{
           textAlign: "center",
-          marginTop: "100px",
-          marginBottom: "50px",
           color: "#3f51b5",
         }}
       >
@@ -38,7 +37,6 @@ function Explore() {
       <br />
       <div
         style={{
-          marginBottom: "500px",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
@@ -97,7 +95,6 @@ function Explore() {
           </>
         )}
       </div>
-      <Footer />
     </>
   );
 }
