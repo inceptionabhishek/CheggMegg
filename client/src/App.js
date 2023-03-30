@@ -37,6 +37,7 @@ import Signupauth from "./Pages/Auth/Signupauth";
 import Explore from "./Pages/Explore";
 import Mycourse from "./Pages/Tutor/Mycourse";
 import CreateCourse from "./Pages/Tutor/CreateCourse";
+import Chatgpt from "./Pages/Student/Chatgpt";
 function App() {
   const [loggedIn, setLoggedIn] = useState(
     localStorage.getItem("login") === "true" ? true : false || false
@@ -103,6 +104,7 @@ function App() {
                 />
                 <Route path="/student/viewanswer" element={<ViewAnswers />} />
                 <Route path="/blog" element={<Blog1 />} />
+                <Route path="/student/chatgpt" element={<Chatgpt />} />
               </>
             ) : (
               <>

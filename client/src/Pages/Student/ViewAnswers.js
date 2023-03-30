@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Spinner } from "react-bootstrap";
 import { Avatar, Chip } from "@mui/material";
+import Editor from "../../Components/Editor/editor";
 function ViewAnswers(props) {
   const [loading, setLoading] = useState(true);
   const [tutor, setTutor] = useState([]);
@@ -13,7 +14,6 @@ function ViewAnswers(props) {
       })
       .then((res) => {
         setTutor(res.data);
-        console.log(res);
       })
       .catch((err) => {
         console.log(err);
@@ -66,9 +66,14 @@ function ViewAnswers(props) {
               <div className="col-md-12">
                 <div className="card">
                   <div className="card-body">
-                    <p>{localStorage.getItem("StudentView.TutorAns")}</p>
+                    <p>
+                      <Editor
+                        data={localStorage.getItem("StudentView.TutorAns")}
+                      />
+                    </p>
                     <h3 className="details-desciptions-text">
-                      Answered By :{tutor.name}
+                      Answered By :
+                      {localStorage.getItem("StudentView.TutorEmail")}
                     </h3>
                     <Avatar src={tutor.profileimage} />
                   </div>

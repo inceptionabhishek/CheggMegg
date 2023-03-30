@@ -94,6 +94,7 @@ function Explore() {
             )}
           </>
         )}
+        {/* <Footer /> */}
       </div>
     </>
   );

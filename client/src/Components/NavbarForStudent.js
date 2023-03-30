@@ -29,28 +29,27 @@ function NavbarForStudent() {
 
               <Nav className="me-auto">
                 <Link to="/student/askquestion">
-                  <Button
-                    variant="outline-light"
-                    style={{ margin: "10px",  }}
-                  >
-                    <VpnKeyIcon />
-                    <span className="links"
-                      style = {{marginLeft: "10px"}}
-                    >Ask Question</span>
+                  <Button variant="outline-light" style={{ margin: "10px" }}>
+                    <span className="links" style={{ marginLeft: "10px" }}>
+                      Ask Question🙇🏼
+                    </span>
                   </Button>
                 </Link>
 
                 <Link to="/student/solvedquestions">
                   <Button variant="outline-light" style={{ margin: "10px" }}>
-                    <VpnKeyIcon />
-                    <span className="links">Solved</span>
+                    <span className="links">Solved ✍🏻</span>
                   </Button>
                 </Link>
 
                 <Link to="/student/unsolvedquestions">
                   <Button variant="outline-light" style={{ margin: "10px" }}>
-                    <VpnKeyIcon />
-                    <span className="links">UnSolved</span>
+                    <span className="links">UnSolved 🪡</span>
+                  </Button>
+                </Link>
+                <Link to="/student/chatgpt">
+                  <Button variant="outline-light" style={{ margin: "10px" }}>
+                    <span className="links">ChatGpt 🧠 </span>
                   </Button>
                 </Link>
               </Nav>

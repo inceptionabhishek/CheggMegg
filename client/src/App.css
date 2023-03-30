@@ -207,3 +207,91 @@
     align-items: center;
   }
 }
+
+.chat__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid lightgray;
+}
+.chat__body {
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+  height: 500px;
+  overflow-y: scroll;
+}
+
+.chat__message {
+  position: relative;
+  font-size: 16px;
+  padding: 10px;
+  width: fit-content;
+  border-radius: 10px;
+  margin-bottom: 30px;
+}
+
+.chat__receiver {
+  margin-left: auto;
+}
+
+.chat__name {
+  position: absolute;
+  top: -15px;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.chat__footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70px;
+  padding: 10px;
+}
+
+.chat_input_box {
+  flex: 1;
+  border: 1px solid lightgray;
+  border-radius: 30px;
+  padding: 10px;
+  outline: none;
+}
+
+.chat_button {
+  background-color: #dcf8c6;
+  border: none;
+  border-radius: 30px;
+  padding: 10px;
+  outline: none;
+  cursor: pointer;
+}
+
+.gpt_chat {
+  display: flex;
+  justify-content: start;
+  margin: 10px;
+  padding: 10px;
+}
+
+.user_chat {
+  margin: 10px;
+  padding: 10px;
+  justify-content: end;
+  display: flex;
+}
+.gpt_message {
+  background-color: #dcf8c6;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+  width: fit-content;
+}
+.user_message {
+  background-color: #f8ddc6;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+  width: fit-content;
+}
