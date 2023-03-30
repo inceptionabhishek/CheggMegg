@@ -80,7 +80,7 @@ function Chatgpt() {
                   e.preventDefault();
                   setChatMessages([
                     ...chatMessages,
-                    { name: "USER", message: input },
+                    { name: "You", message: input },
                   ]);
                   setInput("");
                   setShowInputBox(false);
@@ -93,7 +93,7 @@ function Chatgpt() {
                       console.log(res.data);
                       setChatMessages([
                         ...chatMessages,
-                        { name: "USER", message: input },
+                        { name: "You", message: input },
                         { name: "GPT-3", message: res.data },
                       ]);
                       setShowInputBox(true);

@@ -33,6 +33,7 @@ app.post("/chat", async (req, res) => {
       model: "text-davinci-002",
       prompt: prompt,
     });
+
     res.send(completion.data.choices[0].text);
   } catch (err) {
     console.log(err);
