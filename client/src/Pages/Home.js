@@ -1,20 +1,20 @@
-import React from 'react'
+import React from "react";
 import CarouselComponent from "../Components/CarouselComponent";
-import HomeDetails from '../Components/HomeDetails';
-import Footer from '../Components/Footer';
-import FlowChart from '../Components/FlowChart';
+import HomeDetails from "../Components/HomeDetails";
+import Footer from "../Components/Footer";
+import FlowChart from "../Components/FlowChart";
 
 function Home() {
   return (
     <>
-      <div className='back-background'>
+      <div className="back-background">
         <CarouselComponent />
         <FlowChart />
         <HomeDetails />
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </>
   );
 }
 
-export default Home
+export default Home;

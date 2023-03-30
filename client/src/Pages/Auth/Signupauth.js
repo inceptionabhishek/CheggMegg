@@ -84,7 +84,7 @@ function Signupauth() {
           </Grid>
         </Grid>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

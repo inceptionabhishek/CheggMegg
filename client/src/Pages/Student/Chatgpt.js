@@ -84,6 +84,7 @@ function Chatgpt() {
                   ]);
                   setInput("");
                   setShowInputBox(false);
+
                   axios
                     .post(`${SERVER_URI}/chat`, {
                       prompt: input,
@@ -96,6 +97,9 @@ function Chatgpt() {
                         { name: "GPT-3", message: res.data },
                       ]);
                       setShowInputBox(true);
+                    })
+                    .catch((err) => {
+                      console.log(err);
                     });
                 }}
               >

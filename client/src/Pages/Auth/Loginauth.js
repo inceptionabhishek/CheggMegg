@@ -112,7 +112,7 @@ function Loginauth() {
           </Grid>
         </Grid>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

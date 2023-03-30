@@ -12,7 +12,7 @@ app.use(cors());
 const { Configuration, OpenAIApi } = require("openai");
 
 const configuration = new Configuration({
-  apiKey: "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",
+  apiKey: process.env.OPEN_AI,
 });
 
 const openai = new OpenAIApi(configuration);
@@ -26,13 +26,17 @@ connection.once("open", () => {
 });
 
 app.post("/chat", async (req, res) => {
-  const { prompt } = req.body;
-  console.log(req.body);
-  const completion = await openai.createCompletion({
-    model: "text-davinci-002",
-    prompt: prompt,
-  });
-  res.send(completion.data.choices[0].text);
+  try {
+    const { prompt } = req.body;
+    console.log(req.body);
+    const completion = await openai.createCompletion({
+      model: "text-davinci-002",
+      prompt: prompt,
+    });
+    res.send(completion.data.choices[0].text);
+  } catch (err) {
+    console.log(err);
+  }
 });
 app.use("/admin", require("./routes/Admin.js"));
 
