@@ -1,4 +1,4 @@
-const SERVER_URI = "http://localhost:5000";
+const SERVER_URI = "https://cheggmegg.onrender.com";
 
 const deployedUri = "https://localhost:44300/api";
 
